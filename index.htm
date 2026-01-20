@@ -1,0 +1,72 @@
+<!--This is an html comment, which won't display on the web browser-->
+<!--the first tag tells the browser what type of data is in the file-->
+<!DOCTYPE html>
+<html>
+<body>
+
+<!--the h2 tag basically says to render the text larger. an h1 tag is even bigger, an h6 tag is the littlest-->
+<h2>HTML Form demonstration</h2>
+
+<!--the form tag starts and ends the form - all the input fields need to be in between-->
+<!--many tags allow you to add additional instructions to the web browser-->
+<!--the method of GET means to send the data in the URL, POST sends data in the header (not visible to user) -->
+<!--The action can point to a file on this server (File name, directory), or on another server (Full URL)-->
+<form method="get" action="https://drhws.net/webdev/formsubmit.php">
+    <!--Labels help with phone display - keeps the label with the entry field (for)-->
+  <label for="fname">First name:</label><br>
+  <!--each input element on the form has a type - TEXT is for miscellaneous entry. Stick with text for your skill demonstrations-->
+  <!--You can't count on the user's web browser to enforce data entry rules - a hacker can enter whatever they want-->
+  <!--the NAME here is what the variable is called. the ID is used for javascript-->
+  <!--the VALUE is pre-entered (only for default values or showing what the user already entered)-->
+  <input type="text" id="fname" name="fname" value="Russell"><br>
+<!--a BR tag stands for "break" it will do one carriage return (moves to the left side) and a line feed (moves down one line)-->
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname" value="Doe"><br>
+
+  <label for="hcolor">What color is your hair:</label>
+<!--the select fom element is for drop down lists and also for lists (MULTIPLE attribute)-->
+  <select id="hcolor" name="hcolor">
+<!--the OPTIONS are for each list item. the VALUE is what is sent, the text between can be anything-->
+  <option value="blonde">Blonde (tow-headed)</option>
+  <option value="brown">Brown</option>
+  <option value="black">Black</option>
+  <option value="red">Red</option>
+</select>  <br>
+<!--textarea is for large amounts of text. ROWS argument is how tall it is, COLS is how wide-->
+<label for="desc">Tell us about yourself:</label>
+<!--text inside the TEXTAREA tags is pre-entered -->
+<textarea name="desc" id="desc" rows="10" cols="30">
+(Write your response here)
+</textarea><br>
+<!--PASSWORD input type is to make it so people can't "shoulder surf". Usability for these should allow the password to be seen-->
+<label for="pwd">Password:</label><br>
+  <input type="password" id="pwd" name="pwd"><br>
+<!--for a RADIO input type, all fields with the same name are considered part of the group-->
+<!--basically the same as a drop down list, but one click instead of two. Best for relatively few choices-->
+<!--the labels are for the values, but you need to add a description-->
+<p>Choose your favorite web client-side language:</p>
+  <input type="radio" id="html" name="fav_language" value="HTML">
+  <label for="html">HTML</label><br>
+  <input type="radio" id="css" name="fav_language" value="CSS">
+  <label for="css">CSS</label><br>
+  <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+  <label for="javascript">JavaScript</label>
+<br>
+  <!--a checkbox is for when you want a YES value for a field. If the box is not checked, nothing is sent-->
+  <!-- the VALUE is what is sent when the box is checked-->
+  <input type="checkbox" id="bike" name="bike" value="Bike">
+  <label for="bike"> I have a bike</label><br>
+
+<!-- there are other types for limiting entry to dates, numbers, colors, times, urls, emails...-->
+  <br>
+
+  <!--the type of submit can have different values and a name-->
+  <input type="submit" value="Enter" name="clicked">
+  <!-- the reset button removes all user entered values - this is generally a bad idea-->
+  <input type="reset" value="Reset">
+</form> 
+
+<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+
+</body>
+</html>
