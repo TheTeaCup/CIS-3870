@@ -40,9 +40,7 @@ if ($FirstName) {
     $ValidForm = false;
 }
 
-if ($LastName) {
-    // no specific validation for LastName
-} else {
+if (!$LastName) {
     $FormMessage .= "Error: LastName must have a value. <br>";
     $ValidForm = false;
 }
