@@ -78,3 +78,42 @@ if ($Pwd && $ConfPwd) {
 
 ?>
 
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>PHP Skill demonstration - Form Submitted</h2>
+
+<!--
+This page is the form after submitted with error messages and such.
+-->
+
+<form method="post" action="/php-skill-demo.php">
+
+  <label for="BannerID">Banner ID:</label><br>
+  <input type="text" id="BannerID" name="BannerID" value="<?php echo $BannerID ?>"><br>
+
+  <label for="FirstName">First Name:</label><br>
+  <input type="text" id="FirstName" name="FirstName" value="<?php echo $FirstName ?>"><br>
+
+  <label for="LastName">Last Name:</label><br>
+  <input type="text" id="LastName" name="LastName" value="<?php echo $LastName ?>"><br>
+
+  <label for="EmailAddr">Email Address:</label><br>
+  <input type="text" id="EmailAddr" name="EmailAddr" value="<?php echo $EmailAddr ?>"><br>
+
+  <label for="Pwd">Password:</label><br>
+  <input type="password" id="Pwd" name="Pwd"><br>
+
+  <label for="ConfPwd">Confirm Password:</label><br>
+  <input type="password" id="ConfPwd" name="ConfPwd"><br>
+
+  <br>
+  <input type="submit" value="Enter">
+  <input type="reset" value="Reset">
+</form> 
+
+<p>If you click the "Submit" button, the form-data will be resubmitted.</p>
+
+</body>
+</html>
