@@ -1,0 +1,26 @@
+https://appstate-cis3870-2601-hainesrp.azurewebsites.net/sqldemo.php
+
+// first we create a table for the database.
+CREATE TABLE Test (
+    ID int NOT NULL,
+    Description varchar(255),
+    CONSTRAINT PK_Test PRIMARY KEY (ID)
+);
+
+// this will list all of the tables in the database.
+SHOW TABLES;
+
+// this will insert the following data into the database.
+INSERT INTO Test (ID, Description) VALUES (1,'Hello');
+INSERT INTO Test VALUES (2,'Record 2');
+
+// 
+SELECT * FROM Test;
+SELECT Description, ID FROM Test WHERE ID=2;
+UPDATE Test SET Description='updated' WHERE ID=1;
+SELECT * FROM Test;
+DELETE FROM Test WHERE ID=2;
+SELECT * FROM Test;
+SHOW TABLES;
+DROP TABLE Test;
+SHOW TABLES;

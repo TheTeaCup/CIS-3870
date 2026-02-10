@@ -16,7 +16,6 @@ $RecipeIDError = "";
 if ($RecipeID == "") {
     $RecipeIDError = "<span style='color: red;'>RecipeID must have a value.</span>";
     $ValidForm = false;
-
 } else {
   
     if (!is_numeric($RecipeID))  {
@@ -80,14 +79,7 @@ if ($ValidForm != true) {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Recipe Entry Form</title>
-    <link rel="stylesheet" href="main.css">
-</head>
-<body>
+<?php include 'pageheader.php';?>
 
 <form action="enter-submit-recipe.php" method="post">
 
