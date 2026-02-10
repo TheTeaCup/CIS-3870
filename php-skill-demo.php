@@ -86,6 +86,17 @@ if ($Pwd && $ConfPwd) {
 This page is the form after submitted with error messages and such.
 -->
 
+<?php 
+if (!$ValidForm) {
+    echo "<span style='color: red;'>The form you submitted has errors, please fix and resubmit.</span><br>";
+}
+
+if ($FormMessage) {
+    echo "Error: ".$FormMessage;
+    echo "<br>";
+}
+?>
+
 <form method="post" action="/php-skill-demo.php">
 
   <label for="BannerID">Banner ID:</label><br>
@@ -108,7 +119,10 @@ This page is the form after submitted with error messages and such.
 
   <br>
   <input type="submit" value="Enter">
-  <input type="reset" value="Reset">
+  <a href="/php-skill-demo.htm">
+    <input type="button" value="Back">
+  </a>
+  
 </form> 
 
 <p>If you click the "Submit" button, the form-data will be resubmitted.</p>
