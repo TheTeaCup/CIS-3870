@@ -95,7 +95,8 @@ if ($ValidForm != true) {
     <br><br>
 
     <label for="RecipeDesc">RecipeDesc</label>
-    <textarea id="RecipeDesc" name="RecipeDesc" rows="5" cols="40"><?php echo $RecipeDesc ?>
+    <textarea id="RecipeDesc" name="RecipeDesc" rows="5" cols="40">
+        <?php echo $RecipeDesc ?>
     </textarea>
     <br><br>
 
