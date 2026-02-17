@@ -8,7 +8,7 @@ echo "<head>";
 echo "<meta charset='UTF-8'>";
 //the link tag here points to a CSS stylesheet for formatting
 //the href attribute is the file name of the stylesheet. It can point to another server or directory
-echo "<link rel='stylesheet' href='main.css'>";
+echo "<link rel='stylesheet' href='../main.css'>";
 //we will have a different title for each page, but we will fix this later (complicated)
 echo "<title>Recipe Entry Form</title>";
 echo "</head>";

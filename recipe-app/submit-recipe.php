@@ -8,7 +8,7 @@ $MakesQty = htmlspecialchars($_POST["MakesQty"] ?? "");
 $MakesType = htmlspecialchars($_POST["MakesType"] ?? "");
 $PrepMins = htmlspecialchars($_POST["PrepMins"] ?? "");
 $Category = htmlspecialchars($_POST["Category"] ?? "");
-$Picture = htmlspecialchars($_POST["Picture"] ?? "");
+$Picture = htmlspecialchars($_POST["Picture"] ?? "NULL");
 
 // we want to check if the user entered values in required fields.
 if (!$_POST["RecipeID"]) {
