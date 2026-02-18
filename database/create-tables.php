@@ -9,7 +9,7 @@ try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
   // set the PDO error mode to exception
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e) {
+} catch (PDOException $e) {
   die("Could not connect. " . $e->getMessage());
 }
 
@@ -28,7 +28,7 @@ try {
   )";
   $conn->exec($sql);
   echo "Recipe Table created successfully";
-} catch(PDOException $e) {
+} catch (PDOException $e) {
   echo "Error Recipe Table creating table: " . $sql . "<br>" . $e->getMessage();
 }
 
@@ -44,7 +44,7 @@ try {
   )";
   $conn->exec($sql);
   echo "Ingredient table created successfully<br>";
-} catch(PDOException $e) {
+} catch (PDOException $e) {
   echo "Error creating ingredient table: " . $sql . "<br>" . $e->getMessage();
 }
 

@@ -1,13 +1,13 @@
 <?php
 
-$RecipeID    = htmlspecialchars($_POST["RecipeID"]    ?? "");
+$RecipeID = htmlspecialchars($_POST["RecipeID"] ?? "");
 $RecipeTitle = htmlspecialchars($_POST["RecipeTitle"] ?? "");
-$RecipeDesc  = htmlspecialchars($_POST["RecipeDesc"]  ?? "");
-$MakesQty    = htmlspecialchars($_POST["MakesQty"]    ?? "");
-$MakesType   = htmlspecialchars($_POST["MakesType"]   ?? "");
-$PrepMins    = htmlspecialchars($_POST["PrepMins"]    ?? "");
-$Category    = htmlspecialchars($_POST["Category"]    ?? "");
-$Picture     = htmlspecialchars($_POST["Picture"]     ?? "");
+$RecipeDesc = htmlspecialchars($_POST["RecipeDesc"] ?? "");
+$MakesQty = htmlspecialchars($_POST["MakesQty"] ?? "");
+$MakesType = htmlspecialchars($_POST["MakesType"] ?? "");
+$PrepMins = htmlspecialchars($_POST["PrepMins"] ?? "");
+$Category = htmlspecialchars($_POST["Category"] ?? "");
+$Picture = htmlspecialchars($_POST["Picture"] ?? "");
 
 //We need a variable that keeps track of whether anything was invalid, first it is TRUE
 $ValidForm = true;
@@ -20,8 +20,8 @@ if ($RecipeID == "") {
     $RecipeIDError = "<span style='color: red;'>RecipeID must have a value.</span>";
     $ValidForm = false;
 } else {
-  
-    if (!is_numeric($RecipeID))  {
+
+    if (!is_numeric($RecipeID)) {
         //this runs when it is NOT numeric
         $RecipeIDError = "<span style='color: red;'>RecipeID must be numeric.</span>";
         $ValidForm = false;
@@ -32,7 +32,7 @@ if ($RecipeTitle == "") {
     $RecipeTitleError = "<span style='color: red;'>Recipe title must have a value.</span>";
     $ValidForm = false;
 
-} else{
+} else {
     //Now we check for the length being too long
     if (strlen($RecipeTitle) > 75) {
         //if it's greater than 75, then the form is invalid
@@ -52,24 +52,24 @@ if ($RecipeTitle == "") {
 // (0-9 means any digit)
 //in the second part, you put the string to match it to
 
-if (!preg_match('/[A-Z]/', $Category))  { //after the else, this executes when they DIDN'T use an upper case letter
+if (!preg_match('/[A-Z]/', $Category)) { //after the else, this executes when they DIDN'T use an upper case letter
     $CategoryError = "<span style='color: red;'>Category must have at least one uppercase letter, one lowercase letter, and one number.</span>";
     $ValidForm = false;
 }
 
-if (!preg_match('/[a-z]/', $Category))  {
+if (!preg_match('/[a-z]/', $Category)) {
     $CategoryError = "<span style='color: red;'>Category must have at least one uppercase letter, one lowercase letter, and one number.</span>";
     $ValidForm = false;
 }
 
-if (!preg_match('/[0-9]/', $Category))  {
+if (!preg_match('/[0-9]/', $Category)) {
     $CategoryError = "<span style='color: red;'>Category must have at least one uppercase letter, one lowercase letter, and one number.</span>";
     $ValidForm = false;
 }
 
 // Validate that picture is a URL (Later, we will change this to a local file)
-if (!filter_var($Picture, FILTER_VALIDATE_URL) == true)  {
-    $PictureError = "<span style='color: red;'>NULL". $Picture ." is not a valid URL.</span>";
+if (!filter_var($Picture, FILTER_VALIDATE_URL) == true) {
+    $PictureError = "<span style='color: red;'>NULL" . $Picture . " is not a valid URL.</span>";
     $ValidForm = false;
 }
 
@@ -86,11 +86,11 @@ if ($ValidForm != true) {
     $password = "pass";
     $dbname = "wilsonhl6_db";
     try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch(PDOException $e) {
-    die("Could not connect. " . $e->getMessage());
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        // set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        die("Could not connect. " . $e->getMessage());
     }
 
     try {
@@ -118,7 +118,7 @@ if ($ValidForm != true) {
         $stmt->execute();
         echo "New record created successfully<br>";
         die;
-        } catch(PDOException $e) {
+    } catch (PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
     }
 
@@ -127,11 +127,11 @@ if ($ValidForm != true) {
 
 ?>
 
-<?php include 'pageheader.php';?>
+<?php include 'pageheader.php'; ?>
 
 <form action="enter-submit-recipe.php" method="post">
 
-<h1>Recipe Entry</h1>
+    <h1>Recipe Entry</h1>
     <h2>Enter your recipe information below:</h2>
 
     <label for="RecipeID">RecipeID</label>
@@ -177,4 +177,5 @@ if ($ValidForm != true) {
 </form>
 
 </body>
+
 </html>
