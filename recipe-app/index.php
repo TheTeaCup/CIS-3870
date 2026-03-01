@@ -40,6 +40,8 @@ try {
             <th>Recipe Title</th>
             <th>Makes</th>
             <th>Category</th>
+            <th></th>
+            <th></th>
         </tr>
         <?php
         if ($result->rowCount() > 0) {
@@ -49,6 +51,8 @@ try {
                 echo "<td>" . $row['RecipeTitle'] . "</td>";
                 echo "<td>" . $row['MakesQty'] . "&nbsp;" . $row['MakesType'] . "</td>";
                 echo "<td>" . $row['Category'] . "</td>";
+                echo "<td><a href='delete-recipe.php?RecipeID=" . $row['RecipeID'] . "'>Delete</a></td>";
+                echo "<td><a href='update-recipe.php?RecipeID=" . $row['RecipeID'] . "'>Update</a></td>";
                 echo "</tr>";
             }
             unset($result);
