@@ -1,21 +1,16 @@
 <?php
-$FormIsEmpty=true;
-//we will read in the POST submitted values first
+$FormIsEmpty = true;
 if (isset($_POST["RecipeID"])) {
-    //this execute if there IS a value submitted
-    $RecipeID    = htmlspecialchars($_POST["RecipeID"]);
-    //we removed the ?? part because now we are checking ourselves if the user entered something
+    $RecipeID = htmlspecialchars($_POST["RecipeID"]);
     $FormIsEmpty = false;
 
 } else {
-    //this executes if NO value for RecipeIS was submitted
-    //The variable still needs to be initialized
     $RecipeID = "";
 }
 
 if (isset($_POST["RecipeTitle"])) {
     //this execute if there IS a value submitted
-    $RecipeTitle    = htmlspecialchars($_POST["RecipeTitle"]);
+    $RecipeTitle = htmlspecialchars($_POST["RecipeTitle"]);
     //we removed the ?? part because now we are checking ourselves if the user entered something
     $FormIsEmpty = false;
 } else {
@@ -26,7 +21,7 @@ if (isset($_POST["RecipeTitle"])) {
 
 if (isset($_POST["RecipeDesc"])) {
     //this execute if there IS a value submitted
-    $RecipeDesc    = htmlspecialchars($_POST["RecipeDesc"]);
+    $RecipeDesc = htmlspecialchars($_POST["RecipeDesc"]);
     //we removed the ?? part because now we are checking ourselves if the user entered something
     $FormIsEmpty = false;
 } else {
@@ -37,7 +32,7 @@ if (isset($_POST["RecipeDesc"])) {
 
 if (isset($_POST["MakesQty"])) {
     //this execute if there IS a value submitted
-    $MakesQty    = htmlspecialchars($_POST["MakesQty"]);
+    $MakesQty = htmlspecialchars($_POST["MakesQty"]);
     //we removed the ?? part because now we are checking ourselves if the user entered something
     $FormIsEmpty = false;
 } else {
@@ -48,7 +43,7 @@ if (isset($_POST["MakesQty"])) {
 
 if (isset($_POST["MakesType"])) {
     //this execute if there IS a value submitted
-    $MakesType    = htmlspecialchars($_POST["MakesType"]);
+    $MakesType = htmlspecialchars($_POST["MakesType"]);
     //we removed the ?? part because now we are checking ourselves if the user entered something
     $FormIsEmpty = false;
 } else {
@@ -58,7 +53,7 @@ if (isset($_POST["MakesType"])) {
 }
 if (isset($_POST["PrepMins"])) {
     //this execute if there IS a value submitted
-    $PrepMins    = htmlspecialchars($_POST["PrepMins"]);
+    $PrepMins = htmlspecialchars($_POST["PrepMins"]);
     //we removed the ?? part because now we are checking ourselves if the user entered something
     $FormIsEmpty = false;
 } else {
@@ -68,7 +63,7 @@ if (isset($_POST["PrepMins"])) {
 }
 if (isset($_POST["Category"])) {
     //this execute if there IS a value submitted
-    $Category    = htmlspecialchars($_POST["Category"]);
+    $Category = htmlspecialchars($_POST["Category"]);
     //we removed the ?? part because now we are checking ourselves if the user entered something
     $FormIsEmpty = false;
 } else {
@@ -78,7 +73,7 @@ if (isset($_POST["Category"])) {
 }
 if (isset($_POST["Picture"])) {
     //this execute if there IS a value submitted
-    $Picture    = htmlspecialchars($_POST["Picture"]);
+    $Picture = htmlspecialchars($_POST["Picture"]);
     //we removed the ?? part because now we are checking ourselves if the user entered something
     $FormIsEmpty = false;
 } else {
@@ -91,7 +86,7 @@ if (isset($_POST["Picture"])) {
 
 if (isset($_GET["RecipeID"])) {
     //this execute if there IS a value submitted
-    $RecipeID    = htmlspecialchars($_GET["RecipeID"]);
+    $RecipeID = htmlspecialchars($_GET["RecipeID"]);
     //we removed the ?? part because now we are checking ourselves if the user entered something
     $FormIsEmpty = false;
     if (is_numeric($RecipeID)) {
@@ -103,11 +98,11 @@ if (isset($_GET["RecipeID"])) {
         $dbname = "hainesrp_db";
 
         try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException $e){
-        die("Could not connect. " . $e->getMessage());
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            // set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            die("Could not connect. " . $e->getMessage());
         }
         try {
             //Prepare an SQL statement with all of the fields for the table, with a WHERE clause for RecipeID
@@ -136,7 +131,7 @@ if (isset($_GET["RecipeID"])) {
                 echo "<span style='color: red;'>Recipe not found.</span>";
                 die;
             }
-        } catch(PDOException $e) {
+        } catch (PDOException $e) {
             die("Could not retrieve recipe data. " . $e->getMessage());
         }
 
@@ -155,7 +150,7 @@ if (isset($_GET["RecipeID"])) {
     }
 }
 
-$ValidForm=true;
+$ValidForm = true;
 
 //for now, we set submit to empty, but we will change this when we add a submit button to the form
 if (isset($_POST["Submit"])) {
@@ -166,7 +161,7 @@ if (isset($_POST["Submit"])) {
     $Submit = "";
 }
 
-if (isset($_POST["Submit"])==false) {
+if (isset($_POST["Submit"]) == false) {
     //if they didn't POST, then the form is invalid
     $ValidForm = false;
 } else {
@@ -178,7 +173,7 @@ if (isset($_POST["Submit"])==false) {
         $RecipeIDError = "<span style='color: red;'>RecipeID must have a value.</span>";
         //Need to set ValidForm to false
         $ValidForm = false;
-    //if you put ELSE inside the IF section, this code executes when the comparison is FALSE
+        //if you put ELSE inside the IF section, this code executes when the comparison is FALSE
     } else {
         //now we can check for other reasons why the value might be invalid
         if (is_numeric($RecipeID)) {
@@ -196,7 +191,7 @@ if (isset($_POST["Submit"])==false) {
         $RecipeTitleError = "<span style='color: red;'>Recipe title must have a value.</span>";
         $ValidForm = false;
 
-    } else{
+    } else {
         //Now we check for the length being too long
         if (strlen($RecipeTitle) > 75) {
             //if it's greater than 75, then the form is invalid
@@ -208,7 +203,7 @@ if (isset($_POST["Submit"])==false) {
     //Limiting it to a set inside the php would be consider "hard coded"
     //The fancier way is to have a separate table with the possible categories in it
     //That way, the users can create/update the categories themselves
-    if ($ValidForm==true) {
+    if ($ValidForm == true) {
         //Because the POSTed data was valid, we will update that record
 
         //echo "All data was valid.";
@@ -218,11 +213,11 @@ if (isset($_POST["Submit"])==false) {
         $password = "asdf";
         $dbname = "hainesrp_db";
         try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException $e) {
-        die("Could not connect. " . $e->getMessage());
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            // set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            die("Could not connect. " . $e->getMessage());
         }
 
         try {
@@ -254,20 +249,20 @@ if (isset($_POST["Submit"])==false) {
             //We are redirecting back to the main page, so there can't be ANY output before this
             header("Location: .");
             die;
-            } catch(PDOException $e) {
+        } catch (PDOException $e) {
             echo $sql . "<br>" . $e->getMessage();
         }
 
         $conn = null;
 
-            die;
+        die;
     } //ends the test of whether the form was valid
-    
+
 } //ends the test of whether data was POSTed
 
 
 $RecipeIDError = "";
-if ($FormIsEmpty==true or $Submit=="") {
+if ($FormIsEmpty == true or $Submit == "") {
     //if the form is empty or they did not submit any values, then the form is invalid
     $ValidForm = false;
 } else {
@@ -282,7 +277,7 @@ if ($FormIsEmpty==true or $Submit=="") {
         $RecipeIDError = "<span style='color: red;'>RecipeID must have a value.</span>";
         //Need to set ValidForm to false
         $ValidForm = false;
-    //if you put ELSE inside the IF section, this code executes when the comparison is FALSE
+        //if you put ELSE inside the IF section, this code executes when the comparison is FALSE
     } else {
         //now we can check for other reasons why the value might be invalid
         if (is_numeric($RecipeID)) {
@@ -301,60 +296,61 @@ if ($ValidForm != true) {
     //Here, we will show the form with the values from the database if they have not submitted
     //It will show what they entered if they did submit, but there were errors
     ?>
-<!--because these parts of the pages will be the same for all pages, we will put them in an INCLUDE-->
-<!--INCLUDE will not stop executing the page like require-->
-<?php include 'pageheader.php';?>
-<!--above this, all of the pages will be the same because they use the same INCLUDE-->
+    <!--because these parts of the pages will be the same for all pages, we will put them in an INCLUDE-->
+    <!--INCLUDE will not stop executing the page like require-->
+    <?php include 'pageheader.php'; ?>
+    <!--above this, all of the pages will be the same because they use the same INCLUDE-->
 
-<!--if the file for the action is in the same directory, you only need the file name-->
-<form action="updaterecipe.php" method="post">
+    <!--if the file for the action is in the same directory, you only need the file name-->
+    <form action="updaterecipe.php" method="post">
 
-    <h1>Recipe Entry</h1>
-    <h2>Enter your recipe information below:</h2>
+        <h1>Recipe Entry</h1>
+        <h2>Enter your recipe information below:</h2>
 
-    <label for="RecipeID">RecipeID: <?php echo $RecipeID ?></label>
-    <!--because this is an enter/submit, it should show the values that the user entered-->
-    <input id="RecipeID" name="RecipeID" type="hidden" value="<?php echo $RecipeID ?>">
-    <?php echo $RecipeIDError ?>
-    <br><br>
+        <label for="RecipeID">RecipeID: <?php echo $RecipeID ?></label>
+        <!--because this is an enter/submit, it should show the values that the user entered-->
+        <input id="RecipeID" name="RecipeID" type="hidden" value="<?php echo $RecipeID ?>">
+        <?php echo $RecipeIDError ?>
+        <br><br>
 
-    <label for="RecipeTitle">RecipeTitle</label>
-    <input id="RecipeTitle" name="RecipeTitle" type="text" value="<?php echo $RecipeTitle ?>">
-    <?php echo $RecipeTitleError ?>
-    <br><br>
+        <label for="RecipeTitle">RecipeTitle</label>
+        <input id="RecipeTitle" name="RecipeTitle" type="text" value="<?php echo $RecipeTitle ?>">
+        <?php echo $RecipeTitleError ?>
+        <br><br>
 
-    <label for="RecipeDesc">RecipeDesc</label>
-    <textarea id="RecipeDesc" name="RecipeDesc" rows="5" cols="40"><?php echo $RecipeDesc ?></textarea>
-    <br><br>
+        <label for="RecipeDesc">RecipeDesc</label>
+        <textarea id="RecipeDesc" name="RecipeDesc" rows="5" cols="40"><?php echo $RecipeDesc ?></textarea>
+        <br><br>
 
-    <label for="MakesQty">MakesQty</label>
-    <input id="MakesQty" name="MakesQty" type="text" value="<?php echo $MakesQty ?>">
-    <br><br>
+        <label for="MakesQty">MakesQty</label>
+        <input id="MakesQty" name="MakesQty" type="text" value="<?php echo $MakesQty ?>">
+        <br><br>
 
-    <label for="MakesType">MakesType</label>
-    <input id="MakesType" name="MakesType" type="text" value="<?php echo $MakesType ?>">
-    <br><br>
+        <label for="MakesType">MakesType</label>
+        <input id="MakesType" name="MakesType" type="text" value="<?php echo $MakesType ?>">
+        <br><br>
 
-    <label for="PrepMins">PrepMins</label>
-    <input id="PrepMins" name="PrepMins" type="text" value="<?php echo $PrepMins ?>">
-    <br><br>
+        <label for="PrepMins">PrepMins</label>
+        <input id="PrepMins" name="PrepMins" type="text" value="<?php echo $PrepMins ?>">
+        <br><br>
 
-    <label for="Category">Category</label>
-    <input id="Category" name="Category" type="text" value="<?php echo $Category ?>">
-    <br><br>
+        <label for="Category">Category</label>
+        <input id="Category" name="Category" type="text" value="<?php echo $Category ?>">
+        <br><br>
 
-    <label for="Picture">Picture</label>
-    <input id="Picture" name="Picture" type="text" value="<?php echo $Picture ?>">
-    <br><br>
+        <label for="Picture">Picture</label>
+        <input id="Picture" name="Picture" type="text" value="<?php echo $Picture ?>">
+        <br><br>
 
-    <button type="submit" name="Submit">Update Recipe</button>
+        <button type="submit" name="Submit">Update Recipe</button>
 
-</form>
+    </form>
 
-</body>
-</html>
-<?php
- 
+    </body>
+
+    </html>
+    <?php
+
 } else {
     //We are going to redirect, so no output!
     //echo "Form data was valid.<br>";
@@ -366,27 +362,27 @@ if ($ValidForm != true) {
     $dbname = "hainesrp_db";
 
     try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch(PDOException $e){
-    die("Could not connect. " . $e->getMessage());
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        // set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        die("Could not connect. " . $e->getMessage());
     }
 
     try {
-    // SQL to update a record, using a parameter for the recipeID
-    // always have WHERE for UPDATE using the primary key of the table
-    //$sql = "DELETE FROM Recipe WHERE RecipeID=:RecipeID";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':RecipeID', $RecipeID, PDO::PARAM_INT);
-    $stmt->execute();
-    //we are redirecting if everything was okay, so not output!
-    //echo "Recipe ". $RecipeID ." updated successfully";
-    header("Location: .");
-    } catch(PDOException $e) {
-    echo "Error updating record: " .$sql . "<br>" . $e->getMessage();
+        // SQL to update a record, using a parameter for the recipeID
+        // always have WHERE for UPDATE using the primary key of the table
+        //$sql = "DELETE FROM Recipe WHERE RecipeID=:RecipeID";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':RecipeID', $RecipeID, PDO::PARAM_INT);
+        $stmt->execute();
+        //we are redirecting if everything was okay, so not output!
+        //echo "Recipe ". $RecipeID ." updated successfully";
+        header("Location: .");
+    } catch (PDOException $e) {
+        echo "Error updating record: " . $sql . "<br>" . $e->getMessage();
     }
 
-$conn = null;
+    $conn = null;
 } //ends the test of whether the form was valid
 ?>

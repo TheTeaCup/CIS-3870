@@ -1,9 +1,9 @@
 <?php
-$FormIsEmpty=true;
+$FormIsEmpty = true;
 
 if (isset($_GET["RecipeID"])) {
     //this execute if there IS a value submitted
-    $RecipeID    = htmlspecialchars($_GET["RecipeID"]);
+    $RecipeID = htmlspecialchars($_GET["RecipeID"]);
     $FormIsEmpty = false;
 } else {
     //this executes if NO value for RecipeID was submitted
@@ -12,7 +12,7 @@ if (isset($_GET["RecipeID"])) {
 }
 if (isset($_GET["Confirm"])) {
     //this executes if there IS a value submitted
-    $Confirm    = htmlspecialchars($_GET["Confirm"]);
+    $Confirm = htmlspecialchars($_GET["Confirm"]);
     $FormIsEmpty = false;
 } else {
     //this executes if NO value was submitted
@@ -20,10 +20,10 @@ if (isset($_GET["Confirm"])) {
     $Confirm = "";
 }
 
-$ValidForm=true;
+$ValidForm = true;
 
 $RecipeIDError = "";
-if ($FormIsEmpty==true) {
+if ($FormIsEmpty == true) {
     //if the form is empty, then the form is invalid
     $ValidForm = false;
 } else {
@@ -38,7 +38,7 @@ if ($FormIsEmpty==true) {
         $RecipeIDError = "<span style='color: red;'>RecipeID must have a value.</span>";
         //Need to set ValidForm to false
         $ValidForm = false;
-    //if you put ELSE inside the IF section, this code executes when the comparison is FALSE
+        //if you put ELSE inside the IF section, this code executes when the comparison is FALSE
     } else {
         //now we can check for other reasons why the value might be invalid
         if (is_numeric($RecipeID)) {
@@ -52,15 +52,15 @@ if ($FormIsEmpty==true) {
 } //ends the test of whether the form was empty
 
 //If they haven't confirmed, then we will ask if they want to delete
-if ($Confirm=="True") {
+if ($Confirm == "True") {
 
 } else {
     //this runs if they did not confirm
     include 'pageheader.php';
     echo "Are you sure you want to Delete?";
-    echo "<a href='deleterecipe.php?RecipeID=". $RecipeID ."&Confirm=True'>Yes</a>";
+    echo "<a href='deleterecipe.php?RecipeID=" . $RecipeID . "&Confirm=True'>Yes</a>";
     echo "</body></html>";
-    $ValidForm=false; //Don't delete until they confirm
+    $ValidForm = false; //Don't delete until they confirm
 }
 
 //after checking all required values, we will see if the form is valid
@@ -68,7 +68,7 @@ if ($ValidForm != true) {
     //Showing whether the data was valid for debugging purposes
     //echo "Form data was invalid.";
     //Don't want to DIE, want to show the form with their values entered
- 
+
 } else {
     //We are going to redirect, so no output!
     //echo "Form data was valid.<br>";
@@ -80,27 +80,27 @@ if ($ValidForm != true) {
     $dbname = "hainesrp_db";
 
     try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch(PDOException $e){
-    die("Could not connect. " . $e->getMessage());
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        // set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        die("Could not connect. " . $e->getMessage());
     }
 
     try {
-    // SQL to delete a record, using a parameter for the recipeID
-    // always have WHERE for DELETE using the primary key of the table
-    $sql = "DELETE FROM Recipe WHERE RecipeID=:RecipeID";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':RecipeID', $RecipeID, PDO::PARAM_INT);
-    $stmt->execute();
-    //we are redirecting if everything was okay, so not output!
-    //echo "Recipe ". $RecipeID ." deleted successfully";
-    header("Location: .");
-    } catch(PDOException $e) {
-    echo "Error deleting record: " .$sql . "<br>" . $e->getMessage();
+        // SQL to delete a record, using a parameter for the recipeID
+        // always have WHERE for DELETE using the primary key of the table
+        $sql = "DELETE FROM Recipe WHERE RecipeID=:RecipeID";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':RecipeID', $RecipeID, PDO::PARAM_INT);
+        $stmt->execute();
+        //we are redirecting if everything was okay, so not output!
+        //echo "Recipe ". $RecipeID ." deleted successfully";
+        header("Location: .");
+    } catch (PDOException $e) {
+        echo "Error deleting record: " . $sql . "<br>" . $e->getMessage();
     }
 
-$conn = null;
+    $conn = null;
 } //ends the test of whether the form was valid
 ?>
