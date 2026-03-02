@@ -5,4 +5,7 @@
     form that will add a new customer record. 
     All of the data entered by the user must be appropriately validated 
     and escaped for display on an HTML page and for executing on a MySQL server.
+
+    Fields: UserID, FirstName, LastName, Address1, City, State, Zip.
  -->
+
