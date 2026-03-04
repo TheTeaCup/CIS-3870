@@ -1,11 +1,17 @@
 <?php
 $FormIsEmpty = true;
+$RecipeID = "";
+$RecipeTitle = "";
+$RecipeDesc = "";
+$MakesQty = "";
+$MakesType = "";
+$PrepMins = "";
+$Category = "";
+$Picture = "";
+
 if (isset($_POST["RecipeID"])) {
     $RecipeID = htmlspecialchars($_POST["RecipeID"]);
     $FormIsEmpty = false;
-
-} else {
-    $RecipeID = "";
 }
 
 if (isset($_POST["RecipeTitle"])) {
@@ -13,10 +19,6 @@ if (isset($_POST["RecipeTitle"])) {
     $RecipeTitle = htmlspecialchars($_POST["RecipeTitle"]);
     //we removed the ?? part because now we are checking ourselves if the user entered something
     $FormIsEmpty = false;
-} else {
-    //this executes if NO value for RecipeIS was submitted
-    //The variable still needs to be initialized
-    $RecipeTitle = "";
 }
 
 if (isset($_POST["RecipeDesc"])) {
@@ -24,10 +26,6 @@ if (isset($_POST["RecipeDesc"])) {
     $RecipeDesc = htmlspecialchars($_POST["RecipeDesc"]);
     //we removed the ?? part because now we are checking ourselves if the user entered something
     $FormIsEmpty = false;
-} else {
-    //this executes if NO value for RecipeIS was submitted
-    //The variable still needs to be initialized
-    $RecipeDesc = "";
 }
 
 if (isset($_POST["MakesQty"])) {
@@ -35,10 +33,6 @@ if (isset($_POST["MakesQty"])) {
     $MakesQty = htmlspecialchars($_POST["MakesQty"]);
     //we removed the ?? part because now we are checking ourselves if the user entered something
     $FormIsEmpty = false;
-} else {
-    //this executes if NO value for RecipeIS was submitted
-    //The variable still needs to be initialized
-    $MakesQty = "";
 }
 
 if (isset($_POST["MakesType"])) {
@@ -46,56 +40,39 @@ if (isset($_POST["MakesType"])) {
     $MakesType = htmlspecialchars($_POST["MakesType"]);
     //we removed the ?? part because now we are checking ourselves if the user entered something
     $FormIsEmpty = false;
-} else {
-    //this executes if NO value for RecipeIS was submitted
-    //The variable still needs to be initialized
-    $MakesType = "";
 }
+
 if (isset($_POST["PrepMins"])) {
     //this execute if there IS a value submitted
     $PrepMins = htmlspecialchars($_POST["PrepMins"]);
     //we removed the ?? part because now we are checking ourselves if the user entered something
     $FormIsEmpty = false;
-} else {
-    //this executes if NO value for RecipeIS was submitted
-    //The variable still needs to be initialized
-    $PrepMins = "";
 }
+
 if (isset($_POST["Category"])) {
     //this execute if there IS a value submitted
     $Category = htmlspecialchars($_POST["Category"]);
     //we removed the ?? part because now we are checking ourselves if the user entered something
     $FormIsEmpty = false;
-} else {
-    //this executes if NO value for RecipeIS was submitted
-    //The variable still needs to be initialized
-    $Category = "";
 }
+
 if (isset($_POST["Picture"])) {
     //this execute if there IS a value submitted
     $Picture = htmlspecialchars($_POST["Picture"]);
     //we removed the ?? part because now we are checking ourselves if the user entered something
     $FormIsEmpty = false;
-} else {
-    //this executes if NO value for RecipeIS was submitted
-    //The variable still needs to be initialized
-    $Picture = "";
 }
 
-
-
 if (isset($_GET["RecipeID"])) {
-    //this execute if there IS a value submitted
     $RecipeID = htmlspecialchars($_GET["RecipeID"]);
-    //we removed the ?? part because now we are checking ourselves if the user entered something
     $FormIsEmpty = false;
+
     if (is_numeric($RecipeID)) {
-        //here, we will load the form data from the database
         $servername = "cis38702601.mysql.database.azure.com";
         //We are using the Read Only user (max privilege needed)
-        $username = "hainesrp_ro";
-        $password = "asdf";
-        $dbname = "hainesrp_db";
+        $username = "wilsonhl6_ro";
+        $password = "asd";
+        $dbname = "wilsonhl6_db";
 
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -151,6 +128,8 @@ if (isset($_GET["RecipeID"])) {
 }
 
 $ValidForm = true;
+$RecipeIDError = "";
+$RecipeTitleError = "";
 
 //for now, we set submit to empty, but we will change this when we add a submit button to the form
 if (isset($_POST["Submit"])) {
@@ -166,7 +145,6 @@ if (isset($_POST["Submit"]) == false) {
     $ValidForm = false;
 } else {
     //If they POSTed, then we check the values for errors
-    $RecipeIDError = "";
     if ($RecipeID == "") {
         //if the comparison is TRUE, this will run
         //<span> in html surrounds some stuff that won't have a line break
@@ -176,15 +154,13 @@ if (isset($_POST["Submit"]) == false) {
         //if you put ELSE inside the IF section, this code executes when the comparison is FALSE
     } else {
         //now we can check for other reasons why the value might be invalid
-        if (is_numeric($RecipeID)) {
-            //this means it's numeric, so it's okay and I am not going to do anything
-        } else {
+        if (!is_numeric($RecipeID)) {
             //this runs when it is NOT numeric
             $RecipeIDError = "<span style='color: red;'>RecipeID must be numeric.</span>";
             $ValidForm = false;
         }
     }
-    $RecipeTitleError = "";
+
     if ($RecipeTitle == "") {
         //if the comparison is TRUE, this will run
         //we need to stop ECHOing here, we need to just store the error message
@@ -204,14 +180,11 @@ if (isset($_POST["Submit"]) == false) {
     //The fancier way is to have a separate table with the possible categories in it
     //That way, the users can create/update the categories themselves
     if ($ValidForm == true) {
-        //Because the POSTed data was valid, we will update that record
-
-        //echo "All data was valid.";
 
         $servername = "cis38702601.mysql.database.azure.com";
-        $username = "hainesrp_rw"; //Read/Write user for adding, deleting or modifying data
-        $password = "asdf";
-        $dbname = "hainesrp_db";
+        $username = "wilsonhl6_rw"; //Read/Write user for adding, deleting or modifying data
+        $password = "asd";
+        $dbname = "wilsonhl6_db";
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             // set the PDO error mode to exception
@@ -280,9 +253,7 @@ if ($FormIsEmpty == true or $Submit == "") {
         //if you put ELSE inside the IF section, this code executes when the comparison is FALSE
     } else {
         //now we can check for other reasons why the value might be invalid
-        if (is_numeric($RecipeID)) {
-            //this means it's numeric, so it's okay and I am not going to do anything
-        } else {
+        if (!is_numeric($RecipeID)) {
             //this runs when it is NOT numeric
             $RecipeIDError = "<span style='color: red;'>RecipeID must be numeric.</span>";
             $ValidForm = false;
@@ -302,7 +273,7 @@ if ($ValidForm != true) {
     <!--above this, all of the pages will be the same because they use the same INCLUDE-->
 
     <!--if the file for the action is in the same directory, you only need the file name-->
-    <form action="updaterecipe.php" method="post">
+    <form action="update-recipe.php" method="post">
 
         <h1>Recipe Entry</h1>
         <h2>Enter your recipe information below:</h2>
@@ -357,9 +328,9 @@ if ($ValidForm != true) {
     //Now, we delete the record from the database
 
     $servername = "cis38702601.mysql.database.azure.com";
-    $username = "hainesrp_rw"; //Read/Write user for adding, deleting or modifying data
-    $password = "";
-    $dbname = "hainesrp_db";
+    $username = "wilsonhl6_rw"; //Read/Write user for adding, deleting or modifying data
+    $password = "asd";
+    $dbname = "wilsonhl6_db";
 
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
