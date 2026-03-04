@@ -1,23 +1,16 @@
 <?php
 $FormIsEmpty = true;
+$RecipeID = "";
+$Confirm = "";
 
 if (isset($_GET["RecipeID"])) {
-    //this execute if there IS a value submitted
     $RecipeID = htmlspecialchars($_GET["RecipeID"]);
     $FormIsEmpty = false;
-} else {
-    //this executes if NO value for RecipeID was submitted
-    //The variable still needs to be initialized
-    $RecipeID = "";
 }
+
 if (isset($_GET["Confirm"])) {
-    //this executes if there IS a value submitted
     $Confirm = htmlspecialchars($_GET["Confirm"]);
     $FormIsEmpty = false;
-} else {
-    //this executes if NO value was submitted
-    //The variable still needs to be initialized
-    $Confirm = "";
 }
 
 $ValidForm = true;
@@ -31,7 +24,6 @@ if ($FormIsEmpty == true) {
     //We want to check if the user entered values in required fields
     //to do that we need and IF statement
     //First, we do the comparison == for equal comparison, >, <, != means not equal
-    $RecipeIDError = "";
     if ($RecipeID == "") {
         //if the comparison is TRUE, this will run
         //<span> in html surrounds some stuff that won't have a line break
@@ -41,24 +33,19 @@ if ($FormIsEmpty == true) {
         //if you put ELSE inside the IF section, this code executes when the comparison is FALSE
     } else {
         //now we can check for other reasons why the value might be invalid
-        if (is_numeric($RecipeID)) {
-            //this means it's numeric, so it's okay and I am not going to do anything
-        } else {
+        if (!is_numeric($RecipeID)) {
             //this runs when it is NOT numeric
             $RecipeIDError = "<span style='color: red;'>RecipeID must be numeric.</span>";
             $ValidForm = false;
         }
     }
-} //ends the test of whether the form was empty
+}
 
 //If they haven't confirmed, then we will ask if they want to delete
-if ($Confirm == "True") {
-
-} else {
-    //this runs if they did not confirm
+if (!$Confirm == "True") {
     include 'pageheader.php';
-    echo "Are you sure you want to Delete?";
-    echo "<a href='deleterecipe.php?RecipeID=" . $RecipeID . "&Confirm=True'>Yes</a>";
+    echo "Are you sure you want to Delete? ";
+    echo "<a href='delete-recipe.php?RecipeID=" . $RecipeID . "&Confirm=True'>Yes</a>";
     echo "</body></html>";
     $ValidForm = false; //Don't delete until they confirm
 }
@@ -75,9 +62,9 @@ if ($ValidForm != true) {
     //Now, we delete the record from the database
 
     $servername = "cis38702601.mysql.database.azure.com";
-    $username = "hainesrp_rw"; //Read/Write user for adding, deleting or modifying data
-    $password = "asdf";
-    $dbname = "hainesrp_db";
+    $username = "wilsonhl6_rw"; //Read/Write user for adding, deleting or modifying data
+    $password = "asd";
+    $dbname = "wilsonhl6_db";
 
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
