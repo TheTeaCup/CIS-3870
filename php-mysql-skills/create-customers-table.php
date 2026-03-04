@@ -1,7 +1,7 @@
 <!--
     PHP and MySQL #1: Using an SQL statement within a PHP file, 
-    Create a table called "Customers" with the fields UserID, 
-    FirstName, LastName, Address1, City, State, Zip. 
+    Create a table called "Customers" with the fields 
+    UserID, FirstName, LastName, Address1, City, State, Zip. 
     Set UserID as the Primary Key for the table. 
     Use appropriate data types and lengths for the fields.
  -->
@@ -31,12 +31,12 @@ try {
   City varchar(75),
   State varchar(75),
   Zip varchar(20),
-  CONSTRAINT PK_Recipe PRIMARY KEY (UserID)
+  CONSTRAINT PK_Customers PRIMARY KEY (UserID)
   )";
   $conn->exec($sql);
-  echo "Recipe Table created successfully";
+  echo "Customers Table created successfully";
 } catch (PDOException $e) {
-  echo "Error Recipe Table creating table: " . $sql . "<br>" . $e->getMessage();
+  echo "Error Customers Table creating table: " . $sql . "<br>" . $e->getMessage();
 }
 
 $conn = null;
