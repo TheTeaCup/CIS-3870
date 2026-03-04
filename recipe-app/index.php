@@ -3,7 +3,7 @@
 
 $servername = "cis38702601.mysql.database.azure.com";
 $username = "wilsonhl6_rw"; //Read/Write user for adding, deleting or modifying data
-$password = "pass";
+$password = "asd";
 $dbname = "wilsonhl6_db";
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
