@@ -13,6 +13,6 @@ echo "<link rel='stylesheet' href='../main.css'>";
 echo "<title>Recipe Entry Form</title>";
 echo "</head>";
 echo "<body>";
-echo "<h1>Recipe Application: <a href='/'>Home</a> <a href='enter-submit-recipe.php'>Recipe Entry</a></h1>";
+echo "<h1>Recipe Application: <a href='/recipe-app'>Home</a> <a href='submit-recipe.php'>Recipe Entry</a></h1>";
 
 ?>
