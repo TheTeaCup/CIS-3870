@@ -13,6 +13,6 @@ echo "<link rel='stylesheet' href='../main.css'>";
 echo "<title>Customer Entry Form</title>";
 echo "</head>";
 echo "<body>";
-echo "<h1>Customer List: <a href='/'>Home</a> <a href='create-customer.php'>Customer Entry</a></h1>";
+echo "<h1>Customer List: <a href='.'>Home</a> <a href='create-customer.php'>Customer Entry</a></h1>";
 
 ?>
