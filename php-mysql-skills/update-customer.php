@@ -1,15 +1,3 @@
-<!--
-    PHP and MySQL #4: Use the Customers table from PHP and MySQL 
-    #1. Write SQL commands that will work within PHP code that will allow 
-    someone to modify Customer records. 
-    Your application should include a search function or customer list 
-    that lets them select a single customer record from the Customer table, 
-    then allow the user to modify the record using an HTML form that will then 
-    pass the updates back into the Customer table (an undo function would be desirable). 
-    All of the data entered by the user must be appropriately validated and escaped for 
-    display on an HTML page and for executing on a MySQL server.
- -->
-
 <?php
 $FormIsEmpty = true;
 $UserID = "";
@@ -55,6 +43,15 @@ if (isset($_POST["Zip"])) {
     $FormIsEmpty = false;
 }
 
+$UserIDError = "";
+$FirstNameError = "";
+$LastNameError = "";
+$Address1Error = "";
+$CityError = "";
+$StateError = "";
+$ZipError = "";
+$Error = "";
+
 if (isset($_GET["UserID"])) {
     $UserID = htmlspecialchars($_GET["UserID"]);
     $FormIsEmpty = false;
@@ -63,7 +60,7 @@ if (isset($_GET["UserID"])) {
         $servername = "cis38702601.mysql.database.azure.com";
         //We are using the Read Only user (max privilege needed)
         $username = "wilsonhl6_ro";
-        $password = "asad";
+        $password = "asd";
         $dbname = "wilsonhl6_db";
 
         try {
@@ -116,8 +113,6 @@ if (isset($_GET["UserID"])) {
 }
 
 $ValidForm = true;
-$UserIDError = "";
-$Error = "";
 
 if (isset($_POST["Submit"])) {
     //Submit is also a user entered value, so we need to use htmlspecialchars to prevent XSS
@@ -216,30 +211,43 @@ if (isset($_POST["Submit"]) == false) {
 
 }
 
-$UserIDError = "";
 if ($FormIsEmpty == true or $Submit == "") {
     //if the form is empty or they did not submit any values, then the form is invalid
     $ValidForm = false;
 } else {
     //IF the form was NOT empty, then we check the values for errors
-    //We want to check if the user entered values in required fields
-    //to do that we need and IF statement
-    //First, we do the comparison == for equal comparison, >, <, != means not equal
-    $UserIDError = "";
-    if ($UserID == "") {
-        //if the comparison is TRUE, this will run
-        //<span> in html surrounds some stuff that won't have a line break
-        $UserIDError = "<span style='color: red;'>UserID must have a value.</span>";
-        //Need to set ValidForm to false
+    if (empty($UserID)) {
+        $UserIDError = "<span style='color: red;'>UserID is required.</span>";
         $ValidForm = false;
-        //if you put ELSE inside the IF section, this code executes when the comparison is FALSE
     } else {
-        //now we can check for other reasons why the value might be invalid
         if (!is_numeric($UserID)) {
-            //this runs when it is NOT numeric
-            $UserIDError = "<span style='color: red;'>UserID must be numeric.</span>";
+            $UserIDError = "<span style='color: red;'>UserID should be a number.</span>";
             $ValidForm = false;
         }
+    }
+    if (empty($FirstName)) {
+        $FirstNameError = "<span style='color: red;'>FirstName is required.</span>";
+        $ValidForm = false;
+    }
+    if (empty($LastName)) {
+        $LastNameError = "<span style='color: red;'>LastName is required.</span>";
+        $ValidForm = false;
+    }
+    if (empty($Address1)) {
+        $Address1Error = "<span style='color: red;'>Address1 is required.</span>";
+        $ValidForm = false;
+    }
+    if (empty($City)) {
+        $CityError = "<span style='color: red;'>City is required.</span>";
+        $ValidForm = false;
+    }
+    if (empty($State)) {
+        $StateError = "<span style='color: red;'>State is required.</span>";
+        $ValidForm = false;
+    }
+    if (empty($Zip)) {
+        $ZipError = "<span style='color: red;'>Zip is required.</span>";
+        $ValidForm = false;
     }
 }
 
@@ -247,7 +255,17 @@ if ($ValidForm != true) {
     //Here, we will show the form with the values from the database if they have not submitted
     //It will show what they entered if they did submit, but there were errors
     ?>
-
+<!--
+    PHP and MySQL #4: Use the Customers table from PHP and MySQL 
+    #1. Write SQL commands that will work within PHP code that will allow 
+    someone to modify Customer records. 
+    Your application should include a search function or customer list 
+    that lets them select a single customer record from the Customer table, 
+    then allow the user to modify the record using an HTML form that will then 
+    pass the updates back into the Customer table (an undo function would be desirable). 
+    All of the data entered by the user must be appropriately validated and escaped for 
+    display on an HTML page and for executing on a MySQL server.
+ -->
     <?php include 'pageheader.php'; ?>
 
     <form action="update-customer.php" method="post">
@@ -257,7 +275,7 @@ if ($ValidForm != true) {
 
 
         <label for="UserID">UserID</label>
-        <input id="UserID" name="UserID" type="hidden" value="<?php echo $UserID ?>">
+        <input id="UserID" name="UserID" type="text" readonly="readonly" value="<?php echo $UserID ?>">
         <?php echo $UserIDError ?>
         <br><br>
 
@@ -306,33 +324,34 @@ if ($ValidForm != true) {
     //echo "Form data was valid.<br>";
     //Now, we delete the record from the database
 
-    $servername = "cis38702601.mysql.database.azure.com";
-    $username = "wilsonhl6_rw"; //Read/Write user for adding, deleting or modifying data
-    $password = "asd";
-    $dbname = "wilsonhl6_db";
+    // $servername = "cis38702601.mysql.database.azure.com";
+    // $username = "wilsonhl6_rw"; //Read/Write user for adding, deleting or modifying data
+    // $password = "asd";
+    // $dbname = "wilsonhl6_db";
 
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-        die("Could not connect. " . $e->getMessage());
-    }
+    // try {
+    //     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    //     // set the PDO error mode to exception
+    //     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // } catch (PDOException $e) {
+    //     die("Could not connect. " . $e->getMessage());
+    // }
 
-    try {
-        // SQL to update a record, using a parameter for the recipeID
-        // always have WHERE for UPDATE using the primary key of the table
-        //$sql = "DELETE FROM Recipe WHERE RecipeID=:RecipeID";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':UserID', $UserID, PDO::PARAM_INT);
-        $stmt->execute();
-        //we are redirecting if everything was okay, so not output!
-        //echo "Customer ". $UserID ." updated successfully";
-        header("Location: .");
-    } catch (PDOException $e) {
-        echo "Error updating record: " . $sql . "<br>" . $e->getMessage();
-    }
+    // try {
+    //     // SQL to update a record, using a parameter for the recipeID
+    //     // always have WHERE for UPDATE using the primary key of the table
+    //     //$sql = "DELETE FROM Recipe WHERE RecipeID=:RecipeID";
+    //     $stmt = $conn->prepare($sql);
+    //     $stmt->bindParam(':UserID', $UserID, PDO::PARAM_INT);
+    //     $stmt->execute();
+    //     //we are redirecting if everything was okay, so not output!
+    //     //echo "Customer ". $UserID ." updated successfully";
+    //     header("Location: .");
+    //     die;
+    // } catch (PDOException $e) {
+    //     echo "Error updating record: " . $sql . "<br>" . $e->getMessage();
+    // }
 
-    $conn = null;
+    // $conn = null;
 } //ends the test of whether the form was valid
 ?>
