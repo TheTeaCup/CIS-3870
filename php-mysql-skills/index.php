@@ -12,7 +12,7 @@
 // list customers but its the home page
 
 $servername = "cis38702601.mysql.database.azure.com";
-$username = "wilsonhl6_rw";
+$username = "wilsonhl6_ro";
 $password = "asd";
 $dbname = "wilsonhl6_db";
 try {
@@ -42,10 +42,10 @@ try {
     ?>
     <table>
         <tr>
-            <th>UserID</th>
-            <th>FirstName</th>
-            <th>LastName</th>
-            <th>Location</th>
+            <th>UserID&nbsp;</th>
+            <th>FirstName&nbsp;</th>
+            <th>LastName&nbsp;</th>
+            <th>Location&nbsp;</th>
             <th></th>
             <th></th>
         </tr>
@@ -56,7 +56,7 @@ try {
                 echo "<td style='text-align: right;'>" . $row['UserID'] . "</td>";
                 echo "<td>" . $row['FirstName'] . "</td>";
                 echo "<td>" . $row['LastName'] . "</td>";
-                echo "<td>" . $row['City'] . "&nbsp;," . $row['State'] . "</td>";
+                echo "<td>" . $row['City'] . ",&nbsp;" . $row['State'] . "</td>";
                 echo "<td><a href='delete-customer.php?UserID=" . $row['UserID'] . "'>Delete</a></td>";
                 echo "<td><a href='update-customer.php?UserID=" . $row['UserID'] . "'>Update</a></td>";
                 echo "</tr>";
