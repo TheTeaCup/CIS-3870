@@ -77,7 +77,6 @@ if ($FormIsEmpty == true) {
         $UserIDError = "<span style='color: red;'>UserID is required.</span>";
         $ValidForm = false;
     } else {
-        // UserID should be a number. FirstName and LastName should be text. Address1, City, State, Zip should be text.
         if (!is_numeric($UserID)) {
             $UserIDError = "<span style='color: red;'>UserID should be a number.</span>";
             $ValidForm = false;
@@ -108,9 +107,6 @@ if ($FormIsEmpty == true) {
         $ValidForm = false;
     }
 
-
-
-    // pick back up here
 }
 
 if ($ValidForm != true) {
@@ -142,6 +138,7 @@ if ($ValidForm != true) {
         $stmt->bindParam(':Zip', $Zip, PDO::PARAM_STR);
         $stmt->execute();
         echo "New record created successfully<br>";
+        echo "<a href='/php-mysql-skills'>Back</a>";
         die;
     } catch (PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
