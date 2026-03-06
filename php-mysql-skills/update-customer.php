@@ -197,9 +197,9 @@ if (isset($_POST["Submit"]) == false) {
             $stmt->bindParam(':UserID', $UserID, PDO::PARAM_INT);
             $stmt->bindParam(':FirstName', $FirstName, PDO::PARAM_STR);
             $stmt->bindParam(':LastName', $LastName, PDO::PARAM_STR);
-            $stmt->bindParam(':Address1', $Address1, PDO::PARAM_INT);
+            $stmt->bindParam(':Address1', $Address1, PDO::PARAM_STR);
             $stmt->bindParam(':City', $City, PDO::PARAM_STR);
-            $stmt->bindParam(':State', $State, PDO::PARAM_INT);
+            $stmt->bindParam(':State', $State, PDO::PARAM_STR);
             $stmt->bindParam(':Zip', $Zip, PDO::PARAM_STR);
             $stmt->execute();
 
