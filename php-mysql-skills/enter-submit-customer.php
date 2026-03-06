@@ -74,41 +74,80 @@ if ($FormIsEmpty == true) {
     $ValidForm = false;
 } else {
     if (empty($UserID)) {
-        $UserIDError = "UserID is required.";
+        $UserIDError = "<span style='color: red;'>UserID is required.</span>";
         $ValidForm = false;
+    } else {
+        // UserID should be a number. FirstName and LastName should be text. Address1, City, State, Zip should be text.
+        if (!is_numeric($UserID)) {
+            $UserIDError = "<span style='color: red;'>UserID should be a number.</span>";
+            $ValidForm = false;
+        }
     }
     if (empty($FirstName)) {
-        $FirstNameError = "FirstName is required.";
+        $FirstNameError = "<span style='color: red;'>FirstName is required.</span>";
         $ValidForm = false;
     }
     if (empty($LastName)) {
-        $LastNameError = "LastName is required.";
+        $LastNameError = "<span style='color: red;'>LastName is required.</span>";
         $ValidForm = false;
     }
     if (empty($Address1)) {
-        $Address1Error = "Address1 is required.";
+        $Address1Error = "<span style='color: red;'>Address1 is required.</span>";
         $ValidForm = false;
     }
     if (empty($City)) {
-        $CityError = "City is required.";
+        $CityError = "<span style='color: red;'>City is required.</span>";
         $ValidForm = false;
     }
     if (empty($State)) {
-        $StateError = "State is required.";
+        $StateError = "<span style='color: red;'>State is required.</span>";
         $ValidForm = false;
     }
     if (empty($Zip)) {
-        $ZipError = "Zip is required.";
+        $ZipError = "<span style='color: red;'>Zip is required.</span>";
         $ValidForm = false;
     }
 
-    // UserID should be a number. FirstName and LastName should be text. Address1, City, State, Zip should be text.
-    if (!is_numeric($UserID)) {
-        $UserIDError = "UserID should be a number.";
-        $ValidForm = false;
-    }
+
 
     // pick back up here
+}
+
+if ($ValidForm != true) {
+
+} else {
+    $servername = "cis38702601.mysql.database.azure.com";
+    $username = "wilsonhl6_rw"; //Read/Write user for adding, deleting or modifying data
+    $password = "asd";
+    $dbname = "wilsonhl6_db";
+
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        // set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        die("Could not connect. " . $e->getMessage());
+    }
+
+    try {
+        $sql = "INSERT INTO Customers (UserID, FirstName, LastName, Address1, City, State, Zip)
+        VALUES (:UserID, :FirstName, :LastName, :Address1, :City, :State, :Zip)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':UserID', $UserID, PDO::PARAM_INT);
+        $stmt->bindParam(':FirstName', $FirstName, PDO::PARAM_STR);
+        $stmt->bindParam(':LastName', $LastName, PDO::PARAM_STR);
+        $stmt->bindParam(':Address1', $Address1, PDO::PARAM_INT);
+        $stmt->bindParam(':City', $City, PDO::PARAM_STR);
+        $stmt->bindParam(':State', $State, PDO::PARAM_INT);
+        $stmt->bindParam(':Zip', $Zip, PDO::PARAM_STR);
+        $stmt->execute();
+        echo "New record created successfully<br>";
+        die;
+    } catch (PDOException $e) {
+        echo $sql . "<br>" . $e->getMessage();
+    }
+
+    $conn = null;
 }
 
 ?>
@@ -117,13 +156,12 @@ if ($FormIsEmpty == true) {
 include 'pageheader.php';
 ?>
 
-<form action="create-customer.php" method="post">
+<form action="enter-submit-customer.php" method="post">
 
     <h1>Customer Entry</h1>
     <h2>Enter your customer information below:</h2>
 
     <label for="UserID">UserID</label>
-    <!--because this is an enter/submit, it should show the values that the user entered-->
     <input id="UserID" name="UserID" type="text" value="<?php echo $UserID ?>">
     <?php echo $UserIDError ?>
     <br><br>
