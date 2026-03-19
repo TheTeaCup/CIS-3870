@@ -3,7 +3,7 @@
 
 $servername = "cis38702601.mysql.database.azure.com";
 $username = "wilsonhl6_rw"; //Read/Write user for adding, deleting or modifying data
-$password = "asd";
+$password = "pass";
 $dbname = "wilsonhl6_db";
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -13,7 +13,8 @@ try {
     die("Could not connect. " . $e->getMessage());
 }
 
-include 'pageheader.php';
+include 'pageheaderfunction.php';
+echo PageHeader("Home");
 ?>
 
 <style>
@@ -42,6 +43,7 @@ try {
             <th>Category</th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
         <?php
         if ($result->rowCount() > 0) {
@@ -53,6 +55,7 @@ try {
                 echo "<td>" . $row['Category'] . "</td>";
                 echo "<td><a href='delete-recipe.php?RecipeID=" . $row['RecipeID'] . "'>Delete</a></td>";
                 echo "<td><a href='update-recipe.php?RecipeID=" . $row['RecipeID'] . "'>Update</a></td>";
+                echo "<td><a href='add-ingredients.php?RecipeID=" . $row['RecipeID'] . "'>Add Ingredients</a></td>";
                 echo "</tr>";
             }
             unset($result);

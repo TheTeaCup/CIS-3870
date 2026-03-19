@@ -83,7 +83,7 @@ if ($ValidForm != true) {
     echo "Form data was valid.<br>";
     $servername = "cis38702601.mysql.database.azure.com";
     $username = "wilsonhl6_rw"; //Read/Write user for adding, deleting or modifying data
-    $password = "asd";
+    $password = "pass";
     $dbname = "wilsonhl6_db";
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -127,7 +127,10 @@ if ($ValidForm != true) {
 
 ?>
 
-<?php include 'pageheader.php'; ?>
+<?php
+include 'pageheaderfunction.php';
+echo PageHeader("Recipe Entry");
+?>
 
 <form action="enter-submit-recipe.php" method="post">
 

@@ -71,7 +71,7 @@ if (isset($_GET["RecipeID"])) {
         $servername = "cis38702601.mysql.database.azure.com";
         //We are using the Read Only user (max privilege needed)
         $username = "wilsonhl6_ro";
-        $password = "asd";
+        $password = "pass";
         $dbname = "wilsonhl6_db";
 
         try {
@@ -183,7 +183,7 @@ if (isset($_POST["Submit"]) == false) {
 
         $servername = "cis38702601.mysql.database.azure.com";
         $username = "wilsonhl6_rw"; //Read/Write user for adding, deleting or modifying data
-        $password = "asd";
+        $password = "pass";
         $dbname = "wilsonhl6_db";
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -329,7 +329,7 @@ if ($ValidForm != true) {
 
     $servername = "cis38702601.mysql.database.azure.com";
     $username = "wilsonhl6_rw"; //Read/Write user for adding, deleting or modifying data
-    $password = "asd";
+    $password = "pass";
     $dbname = "wilsonhl6_db";
 
     try {
