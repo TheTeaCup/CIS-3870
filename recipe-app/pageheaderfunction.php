@@ -19,13 +19,13 @@ $html .= "<h1>Recipe Application: ";
 if ($PageTitle=="Home") {
     $html .= "Home ";
 } else {
-    $html .= "<a href='.'>Home</a> ";
+    $html .= "<a href='/recipe-app'>Home</a> ";
 }
 
 if ($PageTitle=="Recipe Entry") { //$PageTitle is passed to this function by the other page
     $html .= "Recipe Entry ";
 } else {
-    $html .= "<a href='enter-submit-recipe.php'>Recipe Entry</a> ";
+    $html .= "<a href='/recipe-app/enter-submit-recipe.php'>Recipe Entry</a> ";
 }
 $html .= "</h1>";
 

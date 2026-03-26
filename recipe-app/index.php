@@ -55,7 +55,7 @@ try {
                 echo "<td>" . $row['Category'] . "</td>";
                 echo "<td><a href='delete-recipe.php?RecipeID=" . $row['RecipeID'] . "'>Delete</a></td>";
                 echo "<td><a href='update-recipe.php?RecipeID=" . $row['RecipeID'] . "'>Update</a></td>";
-                echo "<td><a href='add-ingredients.php?RecipeID=" . $row['RecipeID'] . "'>Add Ingredients</a></td>";
+                echo "<td><a href='/recipe-app/ingredients/add.php?RecipeID=" . $row['RecipeID'] . "'>Add Ingredients</a></td>";
                 echo "</tr>";
             }
             unset($result);
