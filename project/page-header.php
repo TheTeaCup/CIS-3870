@@ -1,11 +1,13 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<link rel='stylesheet' href='./project.css'>
+
 <?php
 function PageHeader($PageTitle)
 {
-    $html = "<!DOCTYPE html>";
-    $html .= "<html lang='en'>";
-    $html .= "<head>";
-    $html .= "<meta charset='UTF-8'>";
-    $html .= "<link rel='stylesheet' href='./project.css'>";
+    
     $html .= "<title>Donor Managment</title>";
     $html .= "</head>";
     $html .= "<body>";
@@ -26,3 +28,4 @@ function PageHeader($PageTitle)
     return $html;
 }
 ?>
+
