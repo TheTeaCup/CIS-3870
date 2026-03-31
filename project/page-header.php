@@ -16,10 +16,10 @@ function PageHeader($PageTitle)
         $html .= "<a href='project'>Main Menu</a> ";
     }
 
-    if ($PageTitle == "Recipe Entry") {
-        $html .= "Recipe Entry ";
+    if ($PageTitle == "Directory") {
+        $html .= "Directory ";
     } else {
-        $html .= "<a href='/recipe-app/enter-submit-recipe.php'>Recipe Entry</a> ";
+        $html .= "<a href='/project/directory.php'>Directory</a> ";
     }
     $html .= "</h1>";
 
