@@ -2,8 +2,8 @@
 // list recipes but its the home page
 
 $servername = "cis38702601.mysql.database.azure.com";
-$username = "wilsonhl6_rw"; //Read/Write user for adding, deleting or modifying data
-$password = "pass";
+$username = "wilsonhl6_ro"; //Read/Write user for adding, deleting or modifying data
+$password = "asd";
 $dbname = "wilsonhl6_db";
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -44,6 +44,7 @@ try {
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
         <?php
         if ($result->rowCount() > 0) {
@@ -56,6 +57,7 @@ try {
                 echo "<td><a href='delete-recipe.php?RecipeID=" . $row['RecipeID'] . "'>Delete</a></td>";
                 echo "<td><a href='update-recipe.php?RecipeID=" . $row['RecipeID'] . "'>Update</a></td>";
                 echo "<td><a href='/recipe-app/ingredients/add.php?RecipeID=" . $row['RecipeID'] . "'>Add Ingredients</a></td>";
+                echo "<td><a target='_blank' href='/recipe-app/pdf.php?RecipeID=" . $row['RecipeID'] . "'>Print Recipe</a></td>";
                 echo "</tr>";
             }
             unset($result);
