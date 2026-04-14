@@ -23,6 +23,12 @@ function PageHeader($PageTitle)
     } else {
         $html .= "<a href='/project/directory.php'>Directory</a> ";
     }
+
+    if ($PageTitle == "Bidder Entry") { 
+        $html .= "Bidder Entry ";
+    } else {
+        $html .= "<a href='entersubmitbidder.php'>Bidder Entry</a> ";
+    }
     $html .= "</h1>";
 
     return $html;
