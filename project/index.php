@@ -13,7 +13,17 @@
   
 </ul>
 
+<a href="/project/donors">
+  Solicit and Gather Donations
+</a>
 
+<a href="/project/items">
+  Organize Donations
+</a>
+
+<a href="/admin">
+  Record Bid Information
+</a>
 
 </body>
 </html>

@@ -5,7 +5,7 @@ function PageHeader($PageTitle)
     $html .= "<html lang='en'>";
     $html .= "<head>";
     $html .= "<meta charset='UTF-8'>";
-    $html .= "<link rel='stylesheet' href='./project.css'>";
+    $html .= "<link rel='stylesheet' href='../project.css'>";
     $html .= "<title>Donor Managment</title>";
     $html .= "</head>";
     $html .= "<body>";
@@ -21,7 +21,7 @@ function PageHeader($PageTitle)
     if ($PageTitle == "Directory") {
         $html .= "<li style='float:right'><a class='active'>Directory</a></li>";
     } else {
-        $html .= "<li style='float:right'><a href='directory.php'>Directory</a></li>";
+        $html .= "<li style='float:right'><a href='/project/donors.php'>Directory</a></li>";
     }
 
     if ($PageTitle == "Bidder Entry") { 
