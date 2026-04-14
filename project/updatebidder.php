@@ -64,7 +64,7 @@ if (isset($_GET["BidderID"])) {
         //here, we will load the form data from the database
         $servername = "cis38702601.mysql.database.azure.com";
         $username = "wilsonhl6_ro";
-        $password = "b2ea792032e2daa706072f7b";
+        $password = "asd";
         $dbname = "wilsonhl6_db";
 
         try {
@@ -226,7 +226,7 @@ if (isset($_POST["Submit"])==false) {
 
         $servername = "cis38702601.mysql.database.azure.com";
         $username = "wilsonhl6_rw"; 
-        $password = "97754f9c5f470a4a85a26b2a";
+        $password = "asd";
         $dbname = "wilsonhl6_db";
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -347,7 +347,7 @@ if ($ValidForm != true) {
 
     $servername = "cis38702601.mysql.database.azure.com";
     $username = "wilsonhl6_rw"; //Read/Write user for adding, deleting, or modifying data
-    $password = "97754f9c5f470a4a85a26b2a";
+    $password = "asd";
     $dbname = "wilsonhl6_db";
 
     try {
