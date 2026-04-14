@@ -238,7 +238,7 @@ echo PageHeader("Bidder Entry");
     <input id="Paid" name="Paid" value="<?php echo $Paid ?>">
     <br><br>
 
-    <button type="submit">Save Bidder information</button>
+    <button type="submit">Save Bidder Information</button>
 
 </form>
 
