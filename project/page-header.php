@@ -9,27 +9,32 @@ function PageHeader($PageTitle)
     $html .= "<title>Donor Managment</title>";
     $html .= "</head>";
     $html .= "<body>";
-    $html .= "<h1>Donor Management ";
+
+    $html .= "<ul>";
+
     if ($PageTitle == "Main Menu") {
-        $html .= "Main Menu ";
+        $html .= "<li><a>Main Menu</a></li>";
     } else {
-        $html .= "<a href='project'>Main Menu</a> ";
+        $html .= "<li><a href='/project'>Main Menu</a></li>";
     }
 
     if ($PageTitle == "Directory") {
-        $html .= "Directory ";
+        $html .= "<li style='float:right'><a class='active'>Directory</a></li>";
     } else {
-        $html .= "<a href='/project/directory.php'>Directory</a> ";
+        $html .= "<li style='float:right'><a href='directory.php'>Directory</a></li>";
     }
 
     if ($PageTitle == "Bidder Entry") { 
-        $html .= "Bidder Entry ";
+        $html .= "<li style='float:right'><a class='active'>Bidder Entry</a></li>";
     } else {
-        $html .= "<a href='entersubmitbidder.php'>Bidder Entry</a> ";
+        $html .= "<li style='float:right'><a href='entersubmitbidder.php'>Bidder Entry</a></li>";
     }
     $html .= "</h1>";
 
     return $html;
 }
 ?>
+</ul>
+
+
 
