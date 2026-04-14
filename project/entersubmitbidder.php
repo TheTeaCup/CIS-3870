@@ -141,7 +141,7 @@ if ($ValidForm != true) {
 
     $servername = "cis38702601.mysql.database.azure.com";
     $username = "wilsonhl6_rw"; //Read/Write user for adding, deleting, or modifying data
-    $password = "97754f9c5f470a4a85a26b2a";
+    $password = "asd";
     $dbname = "wilsonhl6_db";
 
     try {
