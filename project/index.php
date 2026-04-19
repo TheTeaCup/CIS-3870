@@ -21,7 +21,7 @@
   Organize Donations
 </a>
 
-<a href="/admin">
+<a href="/project/admin">
   Record Bid Information
 </a>
 
