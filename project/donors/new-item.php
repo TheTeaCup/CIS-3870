@@ -1,6 +1,6 @@
 <?php 
 include 'page-header.php'; 
-echo PageHeader("New Item"); 
+echo PageHeader("Item Entry"); 
 ?>
 
 create a new item

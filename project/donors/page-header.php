@@ -21,13 +21,19 @@ function PageHeader($PageTitle)
     if ($PageTitle == "Directory") {
         $html .= "<li style='float:right'><a class='active'>Directory</a></li>";
     } else {
-        $html .= "<li style='float:right'><a href='/project/donors.php'>Directory</a></li>";
+        $html .= "<li style='float:right'><a href='/project/donors'>Directory</a></li>";
     }
 
     if ($PageTitle == "Bidder Entry") { 
         $html .= "<li style='float:right'><a class='active'>Bidder Entry</a></li>";
     } else {
-        $html .= "<li style='float:right'><a href='entersubmitbidder.php'>Bidder Entry</a></li>";
+        $html .= "<li style='float:right'><a href='/project/donors/new-donor.php'>Bidder Entry</a></li>";
+    }
+
+    if ($PageTitle == "Item Entry") { 
+        $html .= "<li style='float:right'><a class='active'>Item Entry</a></li>";
+    } else {
+        $html .= "<li style='float:right'><a href='/project/donors/new-item.php'>Item Entry</a></li>";
     }
     $html .= "</ul>";
 
