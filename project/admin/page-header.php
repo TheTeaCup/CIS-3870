@@ -25,7 +25,7 @@ function PageHeader($PageTitle)
     }
 
     
-    $html .= "</h1>";
+    $html .= "</ul>";
 
     return $html;
 }

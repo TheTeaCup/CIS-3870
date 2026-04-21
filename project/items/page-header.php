@@ -48,7 +48,7 @@ function PageHeader($PageTitle)
         $html .= "<li style='float:right'><a href=''>Enter New Category</a></li>";
     }
 
-    $html .= "</h1>";
+    $html .= "</ul>";
 
     return $html;
 }

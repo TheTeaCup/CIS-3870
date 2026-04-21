@@ -29,7 +29,7 @@ function PageHeader($PageTitle)
     } else {
         $html .= "<li style='float:right'><a href='entersubmitbidder.php'>Bidder Entry</a></li>";
     }
-    $html .= "</h1>";
+    $html .= "</ul>";
 
     return $html;
 }
