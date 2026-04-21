@@ -34,3 +34,33 @@ ul li a:hover:not(.active) {
 ul li a.active {
   background-color: #04AA6D;
 }
+
+.center {
+  margin: 0;
+  height: 90vh; /* full screen height */
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center;     /* vertical center */
+}
+
+
+.button-container {
+  display: flex;
+  flex-direction: column; /* stack buttons vertically */
+  gap: 15px;              /* space between buttons */
+}
+
+.button {
+  text-decoration: none;
+  padding: 15px 30px;
+  background-color: #4a90e2;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 6px;
+  width: 260px;           /* makes them uniform */
+}
+
+.button:hover {
+  background-color: #357abd;
+}

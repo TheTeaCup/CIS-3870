@@ -13,17 +13,13 @@
   
 </ul>
 
-<a href="/project/donors">
-  Solicit and Gather Donations
-</a>
 
-<a href="/project/items">
-  Organize Donations
-</a>
+<div class="center button-container">
+  <a class="button" href="/project/donors">Solicit and Gather Donations</a>
+  <a class="button" href="/project/items">Organize Donations</a>
+  <a class="button" href="/project/admin">Record Bid Information</a>
+</div>
 
-<a href="/project/admin">
-  Record Bid Information
-</a>
 
 </body>
 </html>
