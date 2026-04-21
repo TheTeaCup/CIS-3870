@@ -15,13 +15,13 @@ function PageHeader($PageTitle)
     if ($PageTitle == "Main Menu") {
         $html .= "<li><a>Bid and Lot Admin Home</a></li>";
     } else {
-        $html .= "<li><a href='/project/home'>Bid and Lot Admin Home</a></li>";
+        $html .= "<li><a href='/project/admin'>Bid and Lot Admin Home</a></li>";
     }
 
-    if ($PageTitle == "Directory") {
-        $html .= "<li style='float:right'><a class='active'>Directory</a></li>";
+    if ($PageTitle == "Project Home") {
+        $html .= "<li style='float:right'><a class='active'>Main Menu</a></li>";
     } else {
-        $html .= "<li style='float:right'><a href='/project/donors.php'>Directory</a></li>";
+        $html .= "<li style='float:right'><a href='/project/'>Main Menu</a></li>";
     }
 
     
