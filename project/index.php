@@ -15,6 +15,8 @@
 
 
 <div class="center button-container">
+  <h1>What would you like to do?</h1>
+  
   <a class="button" href="/project/donors">Solicit and Gather Donations</a>
   <a class="button" href="/project/items">Organize Donations</a>
   <a class="button" href="/project/admin">Record Bid Information</a>

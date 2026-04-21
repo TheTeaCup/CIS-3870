@@ -37,17 +37,18 @@ ul li a.active {
 
 .center {
   margin: 0;
-  height: 90vh; /* full screen height */
+  height: 90vh;
   display: flex;
-  justify-content: center; /* horizontal center */
-  align-items: center;     /* vertical center */
+  justify-content: center;
+  align-items: center;
 }
 
 
 .button-container {
   display: flex;
-  flex-direction: column; /* stack buttons vertically */
-  gap: 15px;              /* space between buttons */
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
 .button {
@@ -58,7 +59,7 @@ ul li a.active {
   font-size: 16px;
   text-align: center;
   border-radius: 6px;
-  width: 260px;           /* makes them uniform */
+  width: 260px;
 }
 
 .button:hover {
