@@ -13,7 +13,7 @@
 </ul>
 
 
-<div class="center button-container">
+<div class="fullPage center button-container">
   <h1>What would you like to do?</h1>
 
   <a class="button" href="/project/donors">Solicit and Gather Donations</a>
