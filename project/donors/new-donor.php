@@ -17,5 +17,20 @@ echo PageHeader("Bidder Entry");
     <label for="email">Contact Email</label>
     <input type="text" id="email" name="email" placeholder="Contact email">
 
+    <label for="title">Contact Title</label>
+    <input type="text" id="title" name="title" placeholder="Contact title">
+
+    <label for="address">Address</label>
+    <input type="text" id="address" name="address" placeholder="Address">
+
+    <label for="city">City</label>
+    <input type="text" id="city" name="city" placeholder="City">
+
+    <label for="state">State</label>
+    <input type="text" id="state" name="state" placeholder="State">
+
+    <label for="zip">Zip Code</label>
+    <input type="text" id="zip" name="zipCode" placeholder="Zip code">
+
     <input type="submit" value="Submit">
 </form>
