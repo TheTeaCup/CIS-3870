@@ -42,6 +42,8 @@ try {
         echo "<td>".$row["Delivered"]."</td>";
         echo "<td>";
         echo "<a href='recordwinningbid.php?LotID=".$row["LotID"]."'>Record Winning Bid</a>";
+        echo "<br><br>";
+        echo "<a href='markdelivered.php?LotID=".$row["LotID"]."'>Mark Delivered</a>";
         echo "</td>";
         echo "</tr>";
     }
