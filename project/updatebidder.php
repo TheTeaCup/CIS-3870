@@ -57,7 +57,7 @@ if (isset($_POST["Paid"])) {
 
 if (isset($_GET["BidderID"])) {
     //this execute if there IS a value submitted
-    $RecipeID    = htmlspecialchars($_GET["BidderID"]);
+    $BidderID    = htmlspecialchars($_GET["BidderID"]);
     //now we are checking ourselves if the user entered something
     $FormIsEmpty = false;
     if (is_numeric($BidderID)) {
@@ -290,7 +290,8 @@ if ($ValidForm != true) {
     //Here, we will show the form with the values from the database if they have not submitted
     //It will show what they entered if they did submit, but there were errors
     ?>
-<?php include 'page-header.php';?>
+<?php include 'admin/page-header.php';
+echo PageHeader("Bidder Update");?>
 
 <form action="updatebidder.php" method="post">
 
@@ -359,7 +360,7 @@ if ($ValidForm != true) {
     }
 
     try {
-    // SQL to update a record, using a parameter for the recipeID
+    // SQL to update a record, using a parameter for the BidderID
     // always have WHERE for UPDATE using the primary key of the table
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':BidderID', $BidderID, PDO::PARAM_INT);
