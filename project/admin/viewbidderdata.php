@@ -48,6 +48,8 @@ try {
         echo "<a href='deletebidder.php?BidderID=".$row["BidderID"]."'>Delete</a>";
         echo "<br><br>";
         echo "<a href='markpaid.php?BidderID=".$row["BidderID"]."'>Mark Paid</a>";
+        echo "<br><br>";
+        echo "<a href='bidderbill.php?BidderID=".$row["BidderID"]."'>Create Bill</a>";
         echo "</td>";
         echo "</tr>";
     }
