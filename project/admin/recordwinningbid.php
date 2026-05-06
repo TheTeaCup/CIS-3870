@@ -4,6 +4,9 @@ $FormIsEmpty = true;
 if (isset($_POST["LotID"])) {
     $LotID = htmlspecialchars($_POST["LotID"]);
     $FormIsEmpty = false;
+} elseif (isset($_GET["LotID"])) {
+    $LotID = htmlspecialchars($_GET["LotID"]);
+    $FormIsEmpty = false;
 } else {
     $LotID = "";
 }
