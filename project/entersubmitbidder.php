@@ -200,7 +200,7 @@ if ($ValidForm != true) {
 
 ?>
 <?php 
-include 'pageheaderfunction.php'; 
+include 'admin/page-header.php';
 echo PageHeader("Bidder Entry"); 
 ?>
 
