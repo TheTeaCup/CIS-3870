@@ -17,7 +17,7 @@
   <h1>What would you like to do?</h1>
   
   <a class="button" href="/project/admin/print-bidder-forms">Print off bidder forms</a>
-  <a class="button" href="/project/admin/new-bidder">Enter New Bidder Information</a>
+  <a class="button" href="/project/admin/entersubmitbidder.php">Enter New Bidder Information</a>
   <a class="button" href="/project/admin/view-bidder-data">View Bidder Data</a>
   <a class="button" href="/project/admin/view-lot-data">View Lot Data</a>
   <a class="button" href="/project/admin/view-all-bidders">View All Bidders</a>
