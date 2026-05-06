@@ -290,7 +290,7 @@ if ($ValidForm != true) {
     //Here, we will show the form with the values from the database if they have not submitted
     //It will show what they entered if they did submit, but there were errors
     ?>
-<?php include 'admin/page-header.php';
+<?php include 'page-header.php';
 echo PageHeader("Bidder Update");?>
 
 <form action="updatebidder.php" method="post">
@@ -366,7 +366,7 @@ echo PageHeader("Bidder Update");?>
     $stmt->bindParam(':BidderID', $BidderID, PDO::PARAM_INT);
     $stmt->execute();
     //we are redirecting if everything was okay, so not output!
-    header("Location: .");
+    header("Location: index.php");
     } catch(PDOException $e) {
     echo "Error updating record: " .$sql . "<br>" . $e->getMessage();
     }
