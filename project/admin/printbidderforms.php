@@ -1,6 +1,6 @@
 <?php
 
-require('../fpdf.php');
+require('../../pdf/fpdf.php');
 
 $servername = "cis38702601.mysql.database.azure.com";
 $username = "wilsonhl6_ro";

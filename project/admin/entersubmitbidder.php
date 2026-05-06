@@ -1,4 +1,6 @@
 <?php
+include 'page-header.php';
+echo PageHeader("Bidder Entry"); 
 //We need a variable that tracks whether anything was entered. also start with TRUE
 $FormIsEmpty = true;
 
@@ -199,10 +201,6 @@ if ($ValidForm != true) {
 } //end of the IF statement block for the ValidForm == true
 
 ?>
-<?php 
-include 'page-header.php';
-echo PageHeader("Bidder Entry"); 
-?>
 
 <form action="entersubmitbidder.php" method="post">
 
@@ -215,7 +213,7 @@ echo PageHeader("Bidder Entry");
     <br><br>
 
     <label for="Address">Address</label>
-    <textarea id="Address" name="Address" type="text" value="<?php echo $Address ?>">
+    <input id="Address" name="Address" type="text" value="<?php echo $Address ?>">
     <?php echo $AddressError ?>
     <br><br>
 

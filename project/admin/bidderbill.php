@@ -1,5 +1,5 @@
 <?php
-require('../fpdf.php');
+require('../../pdf/fpdf.php');
 
 if (isset($_GET["BidderID"])) {
     $BidderID = htmlspecialchars($_GET["BidderID"]);
