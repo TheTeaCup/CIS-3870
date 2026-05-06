@@ -16,9 +16,9 @@
 <div class="center button-container">
   <h1>What would you like to do?</h1>
   
-  <a class="button" href="/project/admin/print-bidder-forms">Print off bidder forms</a>
+  <a class="button" href="/project/admin/printbidderforms.php">Print Bidder Forms</a>
   <a class="button" href="/project/admin/entersubmitbidder.php">Enter New Bidder Information</a>
-  <a class="button" href="/project/admin/view-bidder-data">View Bidder Data</a>
-  <a class="button" href="/project/admin/view-lot-data">View Lot Data</a>
-  <a class="button" href="/project/admin/view-all-bidders">View All Bidders</a>
+  <a class="button" href="/project/admin/viewbidderdata.php">View Bidder Data</a>
+  <a class="button" href="/project/admin/viewlotdata.php">View Lot Data</a>
+  <a class="button" href="/project/admin/reports.php">Reports</a>
 </div>
