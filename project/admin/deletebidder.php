@@ -27,7 +27,7 @@ if (isset($_GET["BidderID"])) {
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
             //this means bidder has won a lot, so stop deletion
-            include 'admin/page-header.php';
+            include 'page-header.php';
             echo PageHeader("Bidder Delete");
             echo "Can't delete Bidder ".$BidderID.". Bidder has won a lot.";
             die;
@@ -76,7 +76,7 @@ if ($FormIsEmpty==true) {
 if ($Confirm=="True") {
     //do nothing, continue to delete
 } else {
-    include 'admin/page-header.php';
+    include 'page-header.php';
     echo PageHeader("Bidder Delete");
     echo "Are you sure you want to delete this bidder?<br><br>";
     echo "<a href='deletebidder.php?BidderID=".$BidderID."&Confirm=True'>Yes</a>";
@@ -95,7 +95,7 @@ if ($ValidForm != true) {
         $stmt->bindParam(':BidderID', $BidderID, PDO::PARAM_INT);
         $stmt->execute();
         //redirect back to main page
-        header("Location: .");
+        header("Location: index.php");
     } catch(PDOException $e) {
         echo "Error deleting record: ".$sql . "<br>" . $e->getMessage();
     }
