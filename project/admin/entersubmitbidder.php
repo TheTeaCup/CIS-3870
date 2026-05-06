@@ -189,7 +189,7 @@ if ($ValidForm != true) {
         $stmt->bindParam(':Email', $Email, PDO::PARAM_STR);
         $stmt->bindParam(':Paid', $Paid, PDO::PARAM_BOOL);        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         $stmt->execute();
-        header("Location: .");
+        header("Location: index.php");
         die;
         } catch(PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
@@ -200,7 +200,7 @@ if ($ValidForm != true) {
 
 ?>
 <?php 
-include 'admin/page-header.php';
+include 'page-header.php';
 echo PageHeader("Bidder Entry"); 
 ?>
 
