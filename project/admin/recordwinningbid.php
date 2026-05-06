@@ -146,8 +146,8 @@ echo PageHeader("Record Winning Bid");
 
     <h1>Record Winning Bid</h1>
 
-    <label for="LotID">LotID</label>
-    <input id="LotID" name="LotID" type="text" value="<?php echo $LotID ?>">
+    <label>LotID: <?php echo $LotID ?></label>
+    <input id="LotID" name="LotID" type="hidden" value="<?php echo $LotID ?>">
     <?php echo $LotIDError ?>
     <br><br>
 
