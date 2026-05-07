@@ -310,7 +310,7 @@ echo PageHeader("Bidder Update");?>
     <br><br>
 
     <label for="Address">Address</label>
-    <textarea id="Address" name="Address" type="text" value="<?php echo $Address ?>">
+    <textarea id="Address" name="Address"><?php echo $Address ?></textarea>
     <?php echo $AddressError ?>
     <br><br>
 
