@@ -39,8 +39,6 @@ try {
                <th>Update</th>
                <th>Delete</th>
                <th>Mark Receipt as Sent</th>
-               <th>Generate Receipt</th>
-               <th>Generate Letter</th>
             </tr>
          </thead>
          <tbody>
@@ -62,8 +60,6 @@ try {
                   echo "<td><a href='update-donor.php?DonorID=" . $row["DonorID"] . "'>Update</a></td>";
                   echo "<td><a href='delete-donor.php?DonorID=" . $row["DonorID"] . "'>Delete</a></td>";
                   echo "<td><a href='mark-receipt-sent.php?DonorID=" . $row["DonorID"] . "'>Mark Receipt as Sent</a></td>";
-                  echo "<td><a href='generate-receipt.php?DonorID=" . $row["DonorID"] . "'>Generate Receipt</a></td>";
-                  echo "<td><a href='generate-letter.php?DonorID=" . $row["DonorID"] . "'>Generate Letter</a></td>";
                   echo "</tr>";
 
                }
@@ -163,8 +159,6 @@ try {
                <th class="red">Update</th>
                <th class="red">Delete</th>
                <th class="red">Mark Receipt as Sent</th>
-               <th class="red">Generate Receipt</th>
-               <th class="red">Generate Letter</th>
             </tr>
          </thead>
          <tbody>
@@ -186,8 +180,6 @@ try {
                   echo "<td><a href='update-donor.php?DonorID=" . $row["DonorID"] . "'>Update</a></td>";
                   echo "<td><a href='delete-donor.php?DonorID=" . $row["DonorID"] . "'>Delete</a></td>";
                   echo "<td><a href='mark-receipt-sent.php?DonorID=" . $row["DonorID"] . "'>Mark Receipt as Sent</a></td>";
-                  echo "<td><a href='generate-receipt.php?DonorID=" . $row["DonorID"] . "'>Generate Receipt</a></td>";
-                  echo "<td><a href='generate-letter.php?DonorID=" . $row["DonorID"] . "'>Generate Letter</a></td>";
                   echo "</tr>";
 
                }
