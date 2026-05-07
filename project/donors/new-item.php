@@ -1,8 +1,4 @@
 <?php
-
-include 'page-header.php';
-echo PageHeader("Item Entry");
-
 $servername = "cis38702601.mysql.database.azure.com";
 $username = "wilsonhl6_rw";
 $password = "asd";
@@ -87,23 +83,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         try {
 
+            $ItemID = random_int(99999, 2147483647);
+
+            $sql = "SELECT ItemID FROM Item WHERE ItemID = :ItemID";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':ItemID', $ItemID, PDO::PARAM_INT);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                die("ItemID collision. Please reload.");
+            }
+
             $sql = "INSERT INTO Item
-            (
-                Description,
-                RetailValue,
-                DonorID,
-                LotID
-            )
-            VALUES
-            (
-                :Description,
-                :RetailValue,
-                :DonorID,
-                :LotID
-            )";
+(
+    ItemID,
+    Description,
+    RetailValue,
+    DonorID,
+    LotID
+)
+VALUES
+(
+    :ItemID,
+    :Description,
+    :RetailValue,
+    :DonorID,
+    :LotID
+)";
 
             $stmt = $conn->prepare($sql);
-
+            $stmt->bindParam(':ItemID', $ItemID, PDO::PARAM_INT);
             $stmt->bindParam(':Description', $Description);
             $stmt->bindParam(':RetailValue', $RetailValue);
             $stmt->bindParam(':DonorID', $DonorID);
@@ -118,6 +127,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Insert failed: " . $e->getMessage());
         }
     }
+} else {
+    include 'page-header.php';
+    echo PageHeader("Item Entry");
 }
 
 ?>
