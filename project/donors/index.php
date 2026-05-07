@@ -104,8 +104,8 @@ try {
          </thead>
          <tbody>
             <?php
-            if ($result->rowCount() > 0) {
-               foreach ($result as $row) {
+            if ($result2->rowCount() > 0) {
+               foreach ($result2 as $row) {
                   //PHP rows go here
                   echo "<tr>";
                   echo "<td>" . $row["DonorID"] . "</td>";
@@ -116,7 +116,7 @@ try {
                   echo "<td><a href='delete-item.php?ItemID=" . $row["ItemID"] . "'>Delete</a></td>";
                   echo "</tr>";
                }
-               unset($result);
+               unset($result2);
             } else {
                echo "<tr><td colspan='4'>No records found.</td></tr>";
             }
@@ -137,6 +137,14 @@ try {
 
 <?php
 try {
+
+   $sql3 = "SELECT DonorID, BusinessName, ContactName, ContactEmail,
+            ContactTitle, Address, City, State, ZipCode, TaxReceipt
+            FROM Donor
+            WHERE TaxReceipt = 0";
+
+   $result3 = $conn->query($sql3);
+
    ?>
    <div class="table-container">
       <table>
@@ -161,8 +169,8 @@ try {
          </thead>
          <tbody>
             <?php
-            if ($result->rowCount() > 0) {
-               foreach ($result as $row) {
+            if ($result3->rowCount() > 0) {
+               foreach ($result3 as $row) {
                   // PHP rows go here
                   echo "<tr>";
                   echo "<td>" . $row["DonorID"] . "</td>";
@@ -183,7 +191,7 @@ try {
                   echo "</tr>";
 
                }
-               unset($result);
+               unset($result3);
             } else {
                echo "<tr><td colspan='4'>No records found.</td></tr>";
             }
