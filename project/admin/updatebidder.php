@@ -1,9 +1,9 @@
 <?php
-$FormIsEmpty=true;
+$FormIsEmpty = true;
 
 if (isset($_POST["BidderID"])) {
     //this executes if there IS a value submitted
-    $BidderID    = htmlspecialchars($_POST["BidderID"]);
+    $BidderID = htmlspecialchars($_POST["BidderID"]);
     $FormIsEmpty = false;
 } else {
     //this executes if NO value for Name is submitted
@@ -12,52 +12,50 @@ if (isset($_POST["BidderID"])) {
 }
 
 if (isset($_POST["Name"])) {
-    $Name    = htmlspecialchars($_POST["Name"]);
+    $Name = htmlspecialchars($_POST["Name"]);
     $FormIsEmpty = false;
 } else {
     $Name = "";
 }
 
 if (isset($_POST["Address"])) {
-    $Address    = htmlspecialchars($_POST["Address"]);
+    $Address = htmlspecialchars($_POST["Address"]);
     $FormIsEmpty = false;
 } else {
     $Address = "";
 }
 
 if (isset($_POST["CellNumber"])) {
-    $CellNumber    = htmlspecialchars($_POST["CellNumber"]);
+    $CellNumber = htmlspecialchars($_POST["CellNumber"]);
     $FormIsEmpty = false;
 } else {
     $CellNumber = "";
 }
 
 if (isset($_POST["HomeNumber"])) {
-    $HomeNumber    = htmlspecialchars($_POST["HomeNumber"]);
+    $HomeNumber = htmlspecialchars($_POST["HomeNumber"]);
     $FormIsEmpty = false;
 } else {
     $HomeNumber = "";
 }
 
 if (isset($_POST["Email"])) {
-    $Email    = htmlspecialchars($_POST["Email"]);
+    $Email = htmlspecialchars($_POST["Email"]);
     $FormIsEmpty = false;
 } else {
     $Email = "";
 }
 
 if (isset($_POST["Paid"])) {
-    $Paid    = htmlspecialchars($_POST["Paid"]);
+    $Paid = htmlspecialchars($_POST["Paid"]);
     $FormIsEmpty = false;
 } else {
     $Paid = "";
 }
 
-
-
 if (isset($_GET["BidderID"])) {
     //this execute if there IS a value submitted
-    $BidderID    = htmlspecialchars($_GET["BidderID"]);
+    $BidderID = htmlspecialchars($_GET["BidderID"]);
     //now we are checking ourselves if the user entered something
     $FormIsEmpty = false;
     if (is_numeric($BidderID)) {
@@ -68,11 +66,11 @@ if (isset($_GET["BidderID"])) {
         $dbname = "wilsonhl6_db";
 
         try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException $e){
-        die("Could not connect. " . $e->getMessage());
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            // set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            die("Could not connect. " . $e->getMessage());
         }
         try {
             //Prepare an SQL statement with all of the fields for the table, with a WHERE clause for BidderID
@@ -102,10 +100,10 @@ if (isset($_GET["BidderID"])) {
                 echo "<span style='color: red;'>Bidder not found.</span>";
                 die;
             }
-        } catch(PDOException $e) {
+        } catch (PDOException $e) {
             die("Could not retrieve bidder data. " . $e->getMessage());
         }
-    
+
     } else {
         //this runs when it is NOT numeric
         $BidderIDError = "<span style='color: red;'>BidderID must be numeric.</span>";
@@ -121,7 +119,7 @@ if (isset($_GET["BidderID"])) {
     }
 }
 
-$ValidForm=true;
+$ValidForm = true;
 
 //for now, we set submit to empty, but we will change this when we add a submit button to the form
 if (isset($_POST["Submit"])) {
@@ -130,9 +128,9 @@ if (isset($_POST["Submit"])) {
     $FormIsEmpty = false;
 } else {
     $Submit = "";
-}   
+}
 
-if (isset($_POST["Submit"])==false) {
+if (isset($_POST["Submit"]) == false) {
     //If they didn't POST, then the form is invalid
     $ValidForm = false;
 } else {
@@ -143,7 +141,7 @@ if (isset($_POST["Submit"])==false) {
         $BidderIDError = "<span style='color: red;'>*BidderID must have a value.</span>";
         //Need to set ValidForm to false
         $ValidForm = false;
-    //if you put ELSE inside the IF section, this code executes when the comparison is FALSE
+        //if you put ELSE inside the IF section, this code executes when the comparison is FALSE
     } else {
         //now we can check for other reasons why the value might be invalid
         if (is_numeric($BidderID)) {
@@ -215,23 +213,23 @@ if (isset($_POST["Submit"])==false) {
         } elseif (filter_var($Email, FILTER_VALIDATE_EMAIL) == true) {
             //valid email, do nothing
         } else {
-            $EmailError = "<span style='color: red;'>*".$Email." is not a valid email address.</span>";
+            $EmailError = "<span style='color: red;'>*" . $Email . " is not a valid email address.</span>";
             $ValidForm = false;
         }
     }
 
 
-    if ($ValidForm==true) {
+    if ($ValidForm == true) {
         //Now, we will update that record
 
         $servername = "cis38702601.mysql.database.azure.com";
-        $username = "wilsonhl6_rw"; 
+        $username = "wilsonhl6_rw";
         $password = "asd";
         $dbname = "wilsonhl6_db";
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException $e) {
+        } catch (PDOException $e) {
             die("Could not connect. " . $e->getMessage());
         }
 
@@ -252,7 +250,7 @@ if (isset($_POST["Submit"])==false) {
             //We are redirecting back to the main page, so there can't be any output before this
             header("Location: .");
             die;
-            } catch(PDOException $e) {
+        } catch (PDOException $e) {
             echo $sql . "<br>" . $e->getMessage();
         }
 
@@ -263,7 +261,7 @@ if (isset($_POST["Submit"])==false) {
 }
 
 $BidderIDError = "";
-if ($FormIsEmpty==true or $Submit=="") {
+if ($FormIsEmpty == true or $Submit == "") {
     //if the form is empty or they did not submit any values, then the form is invalid
     $ValidForm = false;
 } else {
@@ -290,56 +288,57 @@ if ($ValidForm != true) {
     //Here, we will show the form with the values from the database if they have not submitted
     //It will show what they entered if they did submit, but there were errors
     ?>
-<?php include 'page-header.php';
-echo PageHeader("Bidder Update");?>
+    <?php include 'page-header.php';
+    echo PageHeader("Bidder Update"); ?>
 
-<form action="updatebidder.php" method="post">
+    <form action="updatebidder.php" method="post">
 
-    <h1>Bidder Entry</h1>
-    <h2>Enter your bidder information below:</h2>
+        <h1>Bidder Entry</h1>
+        <h2>Enter your bidder information below:</h2>
 
-    <label for="BidderID">BidderID: <?php echo $BidderID ?></label>
-    <!--because this is an enter/submit, it should show the values that the user entered-->
-    <input id="BidderID" name="BidderID" type="hidden" value="<?php echo $BidderID ?>">
-    <?php echo $BidderIDError ?>
-    <br><br>
+        <label for="BidderID">BidderID: <?php echo $BidderID ?></label>
+        <!--because this is an enter/submit, it should show the values that the user entered-->
+        <input id="BidderID" name="BidderID" type="hidden" value="<?php echo $BidderID ?>">
+        <?php echo $BidderIDError ?>
+        <br><br>
 
-    <label for="Name">Name</label>
-    <input id="Name" name="Name" type="text" value="<?php echo $Name ?>">
-    <?php echo $NameError ?>
-    <br><br>
+        <label for="Name">Name</label>
+        <input id="Name" name="Name" type="text" value="<?php echo $Name ?>">
+        <?php echo $NameError ?>
+        <br><br>
 
-    <label for="Address">Address</label>
-    <textarea id="Address" name="Address"><?php echo $Address ?></textarea>
-    <?php echo $AddressError ?>
-    <br><br>
+        <label for="Address">Address</label>
+        <textarea id="Address" name="Address"><?php echo $Address ?></textarea>
+        <?php echo $AddressError ?>
+        <br><br>
 
-    <label for="CellNumber">Cell Number</label>
-    <input id="CellNumber" name="CellNumber" type="text" value="<?php echo $CellNumber ?>">
-    <?php echo $CellNumberError ?>
-    <br><br>
+        <label for="CellNumber">Cell Number</label>
+        <input id="CellNumber" name="CellNumber" type="text" value="<?php echo $CellNumber ?>">
+        <?php echo $CellNumberError ?>
+        <br><br>
 
-    <label for="HomeNumber">Home Number</label>
-    <input id="HomeNumber" name="HomeNumber" type="text" value="<?php echo $HomeNumber ?>">
-    <?php echo $HomeNumberError ?>
-    <br><br>
+        <label for="HomeNumber">Home Number</label>
+        <input id="HomeNumber" name="HomeNumber" type="text" value="<?php echo $HomeNumber ?>">
+        <?php echo $HomeNumberError ?>
+        <br><br>
 
-    <label for="Email">Email</label>
-    <input id="Email" name="Email" type="text" value="<?php echo $Email ?>">
-    <?php echo $EmailError ?>
-    <br><br>
+        <label for="Email">Email</label>
+        <input id="Email" name="Email" type="text" value="<?php echo $Email ?>">
+        <?php echo $EmailError ?>
+        <br><br>
 
-    <label for="Paid">Paid</label>
-    <input id="Paid" name="Paid" type="text" value="<?php echo $Paid ?>">
-    <br><br>
+        <label for="Paid">Paid</label>
+        <input id="Paid" name="Paid" type="text" value="<?php echo $Paid ?>">
+        <br><br>
 
-    <button type="submit" name="Submit">Update Bidder information</button>
+        <button type="submit" name="Submit">Update Bidder information</button>
 
-</form>
+    </form>
 
-</body>
-</html>
-<?php
+    </body>
+
+    </html>
+    <?php
 
 } else {
     //We are going to redirect, so no output!
@@ -352,25 +351,25 @@ echo PageHeader("Bidder Update");?>
     $dbname = "wilsonhl6_db";
 
     try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch(PDOException $e){
-    die("Could not connect. " . $e->getMessage());
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        // set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        die("Could not connect. " . $e->getMessage());
     }
 
     try {
-    // SQL to update a record, using a parameter for the BidderID
-    // always have WHERE for UPDATE using the primary key of the table
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':BidderID', $BidderID, PDO::PARAM_INT);
-    $stmt->execute();
-    //we are redirecting if everything was okay, so not output!
-    header("Location: index.php");
-    } catch(PDOException $e) {
-    echo "Error updating record: " .$sql . "<br>" . $e->getMessage();
+        // SQL to update a record, using a parameter for the BidderID
+        // always have WHERE for UPDATE using the primary key of the table
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':BidderID', $BidderID, PDO::PARAM_INT);
+        $stmt->execute();
+        //we are redirecting if everything was okay, so not output!
+        header("Location: index.php");
+    } catch (PDOException $e) {
+        echo "Error updating record: " . $sql . "<br>" . $e->getMessage();
     }
 
-$conn = null;
+    $conn = null;
 } //ends the test of whether the form was valid
 ?>
