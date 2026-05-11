@@ -73,7 +73,7 @@ if (!$Lot) {
     </div>
 
     <div>
-        Contact:
+        CategoryID:
         <?php echo htmlspecialchars($Lot["CategoryID"]); ?>
     </div>
 
