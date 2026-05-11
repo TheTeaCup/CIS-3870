@@ -21,7 +21,7 @@ function PageHeader($PageTitle)
     if ($PageTitle == "Item Directory") {
         $html .= "<li style='float:right'><a class='active'>Item Directory</a></li>";
     } else {
-        $html .= "<li style='float:right'><a href='/project/items'>Item Directory</a></li>";
+        $html .= "<li style='float:right'><a href='/project/items/item-directory.php'>Item Directory</a></li>";
     }
 
     if ($PageTitle == "Lot Directory") { 
